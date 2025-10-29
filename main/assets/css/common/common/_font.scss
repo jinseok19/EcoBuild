@@ -1,0 +1,260 @@
+@charset "utf-8";
+
+/**
+ * Copyright (c) 2015 Spoqa, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@import 'variable';
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: local('Spoqa Han Sans Neo Bold'),
+  url('../../fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2'),
+  url('../../fonts/SpoqaHanSansNeo-Bold.woff') format('woff'),
+  url('../../fonts/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: local('Spoqa Han Sans Neo Medium'),
+  url('../../fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2'),
+  url('../../fonts/SpoqaHanSansNeo-Medium.woff') format('woff'),
+  url('../../fonts/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: local('Spoqa Han Sans Neo Regular'),
+  url('../../fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2'),
+  url('../../fonts/SpoqaHanSansNeo-Regular.woff') format('woff'),
+  url('../../fonts/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: local('Spoqa Han Sans Neo Light'),
+  url('../../fonts/SpoqaHanSansNeo-Light.woff2') format('woff2'),
+  url('../../fonts/SpoqaHanSansNeo-Light.woff') format('woff'),
+  url('../../fonts/SpoqaHanSansNeo-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 100;
+  src: local('Spoqa Han Sans Neo Thin'),
+  url('../../fonts/SpoqaHanSansNeo-Thin.woff2') format('woff2'),
+  url('../../fonts/SpoqaHanSansNeo-Thin.woff') format('woff'),
+  url('../../fonts/SpoqaHanSansNeo-Thin.ttf') format('truetype');
+}
+
+/*----------
+--- FONT ---
+----------*/
+
+html{
+  font-family: 'Spoqa Han Sans Neo', 'Noto Sans', sans-serif;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+
+  br {
+    //font-family: 'Malgun Gothic' !important;
+  }
+}
+
+body {
+  .hans_l{
+    font-family: $font-family;
+    font-weight: 300;
+  }
+
+  .hans_r{
+    font-family: $font-family;
+    font-weight: 400;
+  }
+
+  .hans_m{
+    font-family: $font-family;
+    font-weight: 500;
+  }
+
+  .hans_b{
+    font-family: $font-family;
+    font-weight: 700;
+  }
+}
+
+
+.__headline1 {
+  @include __txt_to_rem(74px, 90px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__headline2 {
+  @include __txt_to_rem(64px, 80px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__headline3 {
+  @include __txt_to_rem(56px, 70px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__headline4 {
+  @include __txt_to_rem(50px, 70px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__headline5 {
+  @include __txt_to_rem(40px, 56px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__headline6 {
+  @include __txt_to_rem(32px, 40px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__sub-headline1 {
+  @include __txt_to_rem(27px, 36px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__sub-headline2 {
+  @include __txt_to_rem(24px, 30px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__sub-headline3 {
+  @include __txt_to_rem(22px, 32px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 700;
+}
+.__font_body_1 {
+  @include __txt_to_rem(18px, 32px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 400;
+}
+.__font_body_2 {
+  @include __txt_to_rem(15px, 24px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 400;
+}
+.__font_1 {
+  @include __txt_to_rem(13px, 17px, $font-size-base);
+  font-family: $font-family;
+  font-weight: 400;
+}
+
+
+
+p {
+  @include __txt_to_rem(18px, 32px, $font-size-base);
+  font-family: $font-family;
+}
+.__txt-lg {
+  font-size: __to_rem(20px, $font-size-base);
+}
+.__txt-xs {
+  font-size: __to_rem(15px, $font-size-base);
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+
+  .__headline1,
+  .__headline1--m {
+    @include __txt_to_rem(39px, 47px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__headline2,
+  .__headline2--m {
+    @include __txt_to_rem(34px, 43px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__headline3,
+  .__headline3--m {
+    @include __txt_to_rem(28px, 35px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__headline4,
+  .__headline4--m {
+    @include __txt_to_rem(26px, 38px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__headline5,
+  .__headline5--m {
+    @include __txt_to_rem(24px, 34px, $font-size-min);
+    font-family: $font-family;
+  }
+
+  .__headline6 {
+    @include __txt_to_rem(32px, 26px, $font-size-min);
+    font-family: $font-family;
+  }
+
+  .__sub-headline1,
+  .__sub-headline1--m {
+    @include __txt_to_rem(20px, 28px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__sub-headline2,
+  .__sub-headline2--m {
+    @include __txt_to_rem(16px, 21px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__sub-headline3 {
+    @include __txt_to_rem(15px, 24px, $font-size-min);
+    font-family: $font-family;
+    font-weight: 700;
+  }
+  .__font_body_1 {
+    @include __txt_to_rem(14px, 22px, $font-size-min);
+    font-family: $font-family;
+    font-weight: 400;
+  }
+  .__font_body_2 {
+    @include __txt_to_rem(12px, 18px, $font-size-min);
+    font-family: $font-family;
+    font-weight: 400;
+  }
+  .__font_1 {
+    @include __txt_to_rem(11px, 14px, $font-size-min);
+    font-family: $font-family;
+    font-weight: 400;
+  }
+
+  p {
+    @include __txt_to_rem(14px, 22px, $font-size-min);
+    font-family: $font-family;
+  }
+  .__txt-lg {
+    font-size: __to_rem(16px, $font-size-min);
+  }
+  .__txt-xs {
+    font-size: __to_rem(11px, $font-size-min);
+  }
+}

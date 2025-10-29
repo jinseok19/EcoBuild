@@ -1,0 +1,517 @@
+@import "../var";
+#strategyMidtext{
+  height: 100%;
+  margin-top: __to_rem(160px, $font-size-base);
+  margin-bottom: calc( __to_rem(160px, $font-size-base) - (100vh - __to_rem(800px,  $font-size-base)) / 2 );
+  @media screen and (min-width: 1921px) {
+    margin-bottom: __to_rem(100px, $font-size-base);
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: auto;
+    margin-top: calc( 50vh - __to_vw(400px, $content-box-mobile-width)/2 );
+    margin-bottom: 0px;
+  }
+  .__motion-area{
+    height:100%;
+  }
+}
+
+#strategyHorizontalSection{
+  position: relative;
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 0;
+  }
+  .__panel-list{
+    position: relative;
+    width: __to_vw(5888px, $content-box-max-width);
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 400vw;
+    }
+    .__panel{
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: __to_vw(1168px, $content-box-max-width);
+      height: __to_vw(800px, $content-box-max-width);
+      padding: 0 __to_vw(8px, $content-box-max-width);
+      &.__first-panel{
+        margin-left: __to_vw(-824px, $content-box-max-width);
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        width: __to_vw(308px, $content-box-mobile-width);
+        height: __to_vw(400px, $content-box-mobile-width);
+        padding: 0 __to_vw(5px, $content-box-mobile-width);
+        &.__first-panel{
+          margin-left: __to_vw(-291px, $content-box-mobile-width);
+        }
+      }
+      .__bgs{
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        border-radius: __to_rem(8px, $font-size-base);
+        @media screen and (max-width: $breakpoint-mobile) {
+          border-radius: __to_rem(5px, $font-size-base);
+        }
+      }
+    }
+  }
+  .__title-area{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
+    z-index: 1;
+    .__title{
+      @include position_x;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+      opacity: 0;
+      &.__title1{
+        opacity: 1;
+      }
+      .__headline6{
+        margin-bottom: __to_rem(32.7px, $font-size-base);
+        @media screen and (max-width: $breakpoint-mobile) {
+          margin-bottom: __to_rem(16.8px, $font-size-base);
+        }
+      }
+    }
+    
+  }
+}
+
+#strategySystem{
+  position: relative;
+  z-index: 1;
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: calc( -50vh + __to_vw(400px, $content-box-mobile-width) * 0.75 );
+  }
+  .__utils{
+    color: #888;
+  }
+  .section-body{
+    .__box{
+      padding:__to_rem(80px, $font-size-base) 0; 
+      background-color: #f5f5f5;
+      border-radius: __to_rem(8px, $font-size-base);
+      @media screen and (max-width: 1280px) {
+        margin: 0 __to_vw(-80px, $content-box-max-width);
+        border-radius: 0;
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        margin:0 -20px;
+        padding: __to_rem(56px, $font-size-base) __to_rem(32px, $font-size-base); 
+        border-radius: 0px;
+      }
+    }
+    .__bg-text{
+      @include position_xy;
+      color: #e5e5e5;
+      font-size: __to_rem(280px, $font-size-base);
+      font-weight: bold;
+      white-space: nowrap;
+      z-index: 0;
+      @media screen and (max-width: 1440px) {
+        display: none;
+      }
+    }
+    .__system-block{
+      max-width: 1100px;
+      margin: 0 auto; 
+      position: relative;
+      z-index: 1;
+      @media screen and (max-width: 1280px) {
+        max-width: 100%;
+        margin: 0 __to_vw(80px, $content-box-max-width);
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        margin: 0;
+      }
+      .__hd{
+        padding: __to_rem(29px, $font-size-base) 0;
+        background-color: $color-primary;
+        border-radius: __to_rem(8px, $font-size-base);
+        color: #fff;
+        text-align: center;
+        >.__font_body_1{
+          font-weight: 700;
+        }
+      }
+      .__bd{
+        margin-top: __to_rem(16px, $font-size-base);
+        @media screen and (max-width: $breakpoint-mobile) {
+          margin-top: __to_rem(10px, $font-size-base);
+        }
+        &.__top-slide{
+          margin-left: __to_rem(-8px, $font-size-base);
+          margin-right: __to_rem(-8px, $font-size-base);
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-left: __to_rem(-5px, $font-size-base);
+            margin-right: __to_rem(-5px, $font-size-base);
+          }
+          .swiper{
+            overflow: visible;
+            //height: 100%;
+          }
+          .swiper-wrapper{
+            height: 100%;
+          }
+          .swiper-slide{
+            display: flex;
+            align-items: center;
+            width: calc(50% - __to_rem(16px, $font-size-base));
+            height: 100%;
+            min-height: __to_rem(140px, $font-size-base);
+            margin: 0 __to_rem(8px, $font-size-base);
+            padding: __to_rem(25px, $font-size-base) 0;
+            background-color: #fff;
+            border-radius: __to_rem(8px, $font-size-base);
+            box-shadow: 0 __to_rem(3px, $font-size-base) __to_rem(20px, $font-size-base) 0 rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+            @media screen and (max-width: 1280px) {
+              min-height: __to_rem(160px, $font-size-base);
+            }
+            @media screen and (max-width: $breakpoint-mobile) {
+              width: calc(100% - __to_rem(10px, $font-size-base));
+              min-height: __to_rem(136px, $font-size-base);
+              margin: 0 __to_rem(5px, $font-size-base);
+              padding: __to_rem(16px, $font-size-base);
+            }
+            .text-box{
+              width: 100%;
+              text-align: center;
+              padding-left: __to_rem(25px, $font-size-base);
+              padding-right: __to_rem(25px, $font-size-base);
+              .__font_body_2{
+                margin-top: __to_rem(8px, $font-size-base);
+                color: #888;
+                @media screen and (max-width: $breakpoint-mobile) {
+                  margin-top: __to_rem(5px, $font-size-base);
+                }
+              }
+            }
+          }
+        }
+        &.__mid-slide{
+          margin-left: __to_rem(-8px, $font-size-base);
+          margin-right: __to_rem(-8px, $font-size-base);
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-left: __to_rem(-5px, $font-size-base);
+            margin-right: __to_rem(-5px, $font-size-base);
+          }
+          .swiper{
+            height: 100%;
+            @media screen and (max-width: $breakpoint-mobile) {
+              overflow: visible;
+            }
+          }
+          .swiper-slide{
+            position: relative;
+            width: calc(33.3% - __to_rem(16px, $font-size-base));
+            height: 100%;
+            min-height: __to_rem(320px, $font-size-base);
+            margin: 0 __to_rem(8px, $font-size-base);
+            padding: __to_rem(32px, $font-size-base);
+            border-radius: __to_rem(8px, $font-size-base);
+            box-sizing: border-box;
+            color: #fff;
+            @media screen and (max-width: $breakpoint-mobile) {
+              width: calc(100% - __to_rem(10px, $font-size-base));
+              height: 100%;
+              min-height: __to_rem(310px, $font-size-base);
+              margin: 0 __to_rem(5px, $font-size-base);
+            }
+            .__years{
+              margin-bottom : __to_rem(16px, $font-size-base);
+              padding-bottom : __to_rem(16px, $font-size-base);
+              border-bottom: 1px solid rgba($color: #fff, $alpha: 0.6);
+              @media screen and (max-width: $breakpoint-mobile) {
+                margin-bottom : __to_rem(10px, $font-size-base);
+                padding-bottom : __to_rem(10px, $font-size-base);
+              }
+            }
+            .__desc{
+              position: absolute;
+              left: __to_rem(32px, $font-size-base);
+              bottom: __to_rem(32px, $font-size-base);
+              padding-right: __to_rem(32px, $font-size-base);
+              >li{
+                position: relative;
+                margin-top: __to_rem(2px, $font-size-base);
+                padding-left: __to_rem(14px, $font-size-base);
+                @media screen and (max-width: $breakpoint-mobile) {
+                  padding-left: __to_rem(8px, $font-size-min);
+                }
+                &::before{
+                  content: '-';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                }
+              }
+            }
+            &.__green{
+              background-color: #56a311;
+            }
+            &.__blue{
+              background-color: #1d7fbf;
+            }
+            &.__purple{
+              background-color: #8e1fff;
+            }
+          }
+        }
+        &.__bottom-slide{
+          margin-left: __to_rem(-8px, $font-size-base);
+          margin-right: __to_rem(-8px, $font-size-base);
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-left: __to_rem(-5px, $font-size-base);
+            margin-right: __to_rem(-5px, $font-size-base);
+          }
+          .swiper{
+            overflow: visible;
+            height: 100%;
+          }
+          .swiper-slide{
+            position: relative;
+            width: calc(33.3% - __to_rem(16px, $font-size-base));
+            height: 100%;
+            margin: 0 __to_rem(8px, $font-size-base);
+            padding: __to_rem(32px, $font-size-base);
+            border-radius: __to_rem(8px, $font-size-base);
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 __to_rem(3px, $font-size-base) __to_rem(20px, $font-size-base) 0 rgba(0, 0, 0, 0.05);
+            @media screen and (max-width: $breakpoint-mobile) {
+              width: calc(100% - __to_rem(10px, $font-size-base));
+              margin: 0 __to_rem(5px, $font-size-base);
+              padding: __to_rem(30px, $font-size-base);
+            }
+            .__title{
+              margin-bottom: __to_rem(18px, $font-size-base);
+              color:$color-primary;
+              font-weight: bold;
+              @media screen and (max-width: $breakpoint-mobile) {
+                margin-bottom: __to_rem(15px, $font-size-base);
+              }
+            }
+            .__desc{
+              >li{
+                position: relative;
+                padding-left: __to_rem(14px, $font-size-base);
+                color: #222;
+                @media screen and (max-width: $breakpoint-mobile) {
+                  padding-left: __to_rem(8px, $font-size-min);
+                }
+                &::before{
+                  content: '-';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+      .__ft{
+        margin-top: __to_rem(16px, $font-size-base);
+        padding: __to_rem(29px, $font-size-base) 0;
+        background-color: #fff;
+        border-radius: __to_rem(8px, $font-size-base);
+        color: $color-primary;
+        text-align: center;
+        box-shadow: 0 __to_rem(3px, $font-size-base) __to_rem(20px, $font-size-base) 0 rgba(0, 0, 0, 0.05);
+        @media screen and (max-width: $breakpoint-mobile) {
+          margin-top: __to_rem(10px, $font-size-base);
+        }
+        strong{
+          // font-size: __to_rem(14px, $font-size-min);
+          // line-height: __to_rem(22px, $font-size-min);
+          font-weight:bold;
+        }
+      }
+    }
+    .__arrow{
+      svg{
+        display: block; 
+        margin: 0 auto;
+        width: __to_rem(104px, $font-size-base);
+        height: __to_rem(104px, $font-size-base);
+        @media screen and (max-width: $breakpoint-mobile) {
+          width: __to_rem(84px, $font-size-base);
+          height: __to_rem(84px, $font-size-base);
+        }
+      }
+    }
+  }
+}
+
+#strategyPlan{
+  .__plan-slide{
+    margin-left: __to_rem(-8px, $font-size-base);
+    margin-right: __to_rem(-8px, $font-size-base);
+    @media screen and (max-width: $breakpoint-mobile) {
+      margin-left: __to_rem(-5px, $font-size-base);
+      margin-right: __to_rem(-5px, $font-size-base);
+    }
+    .swiper{
+      height:100%;
+      @media screen and (max-width: $breakpoint-mobile) {
+        overflow: visible;
+      }
+    }
+    .swiper-slide{
+      position: relative;
+      width: calc(33.3% - __to_rem(16px, $font-size-base));
+      height: 100%;
+      margin: 0 __to_rem(8px, $font-size-base);
+      @media screen and (max-width: $breakpoint-mobile) {
+        width: calc(90% - __to_rem(16px, $font-size-base));
+        margin: 0 __to_rem(5px, $font-size-base);
+      }
+      .__plan-box{
+        height: 100%;
+        border-radius: 0 0 __to_rem(8px, $font-size-base) __to_rem(8px, $font-size-base);
+        overflow: hidden;
+        dt{
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: __to_rem(200px, $font-size-base);
+          background-color: #f5f5f5;
+          border-radius: __to_rem(8px, $font-size-base) __to_rem(8px, $font-size-base) 0 0;
+          text-align: center;
+          font-weight: bold;
+          &::before{
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            width: 0px;
+            height: 0px;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 16px solid #f5f5f5;
+            transform: translateX(-16px);
+            @media screen and (max-width: $breakpoint-mobile) {
+              bottom: -9px;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-top: 10px solid #f5f5f5;
+              transform: translateX(-10px);
+            }
+          }
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: __to_rem(120px, $font-size-base);
+          }
+        }
+        dd{
+          height: calc(100% - __to_rem(200px, $font-size-base));
+          padding: __to_rem(48px, $font-size-base);
+          background-color: $color-primary;
+          color: #fff;
+          box-sizing: border-box;
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: calc(100% - __to_rem(120px, $font-size-base));
+            padding: __to_rem(32px, $font-size-base) __to_rem(36px, $font-size-base);
+            // font-size: __to_rem(14px, $font-size-min);
+            // line-height: __to_rem(22px, $font-size-min);
+          }
+        }
+      }
+    }
+  }
+}
+
+#result {
+  .__result-slide{
+    margin-left: __to_rem(-8px, $font-size-base);
+    margin-right: __to_rem(-8px, $font-size-base);
+    @media screen and (max-width: $breakpoint-mobile) {
+      margin-left: __to_rem(-5px, $font-size-base);
+      margin-right: __to_rem(-5px, $font-size-base);
+    }
+    .swiper{
+      height:100%;
+      @media screen and (max-width: $breakpoint-mobile) {
+        overflow: visible;
+      }
+    }
+    .swiper-slide{
+      position: relative;
+      width: calc(33.3% - __to_rem(16px, $font-size-base));
+      height: 100%;
+      margin: 0 __to_rem(8px, $font-size-base);
+      @media screen and (max-width: $breakpoint-mobile) {
+        width: calc(90% - __to_rem(16px, $font-size-base));
+        margin: 0 __to_rem(5px, $font-size-base);
+      }
+      .__result-box{
+        height: __to_rem(520px, $font-size-base);
+        overflow: hidden;
+        box-sizing: border-box;
+        @media screen and (max-width: $breakpoint-mobile) {
+          height: __to_rem(304px, $font-size-min);
+        }
+        .__box-img{
+          position: relative;
+          width: 100%;
+          height: __to_rem(320px, $font-size-base);
+          border-radius: __to_rem(8px, $font-size-base) __to_rem(8px, $font-size-base) 0 0;
+          border: 2px solid #f5f5f5;
+          box-sizing: border-box;
+          overflow: hidden;
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: __to_rem(170px, $font-size-min);
+          }
+          img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+        .__box-desc{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: calc(100% - __to_rem(320px, $font-size-base));
+          padding: 0 __to_rem(30px, $font-size-base);
+          background: #f5f5f5;
+          border-radius: 0 0 __to_rem(8px, $font-size-base) __to_rem(8px, $font-size-base);
+          box-sizing: border-box;
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: calc(100% - __to_rem(170px, $font-size-min));
+            padding: 0 __to_rem(20px, $font-size-base);
+          }
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+@import "../var";
+
+.__desc {
+    &.__white {
+        color: #fff;
+    }
+    h3 {
+        strong {
+            display: block;
+            position: relative;
+        }
+    }
+
+    p {
+        margin-top: __to_rem(10px, $font-size-base);
+        span {
+            display: block;
+            position: relative;
+        }
+    }
+
+
+
+    .__cta {
+        //margin-top: __to_rem(30px, $font-size-base);
+
+        //overflow: hidden;
+        //max-height: 0;
+        transition: height 600ms $easeOutQuart, max-height 600ms $easeOutQuart;
+        will-change: height, max-height;
+        box-sizing: border-box;
+
+        height: auto;
+        max-height: __to_rem(96px, $font-size-base);
+        .__btn {
+            opacity: 1;
+            //transform: translateY(0);
+        }
+
+        .__btn {
+            //opacity: 0;
+            //transition: opacity 600ms, transform 600ms $easeOutQuad, background-color 300ms;
+            //transform: translateY(100%);
+        }
+
+        &.__show {
+            max-height: __to_rem(96px, $font-size-base);
+            height: auto;
+            .__btn {
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint-tablet) {
+            height: auto;
+            max-height: __to_rem(75px, $font-size-min);
+            display: none !important;
+        }
+        //margin-top: __to_rem(30px, $font-size-base);
+
+        //overflow: hidden;
+        max-height: 0;
+        transition: height 600ms $easeOutQuart, max-height 600ms $easeOutQuart;
+        will-change: height, max-height;
+        box-sizing: border-box;
+
+        .__btn {
+            opacity: 0;
+            transition: opacity 600ms, transform 600ms $easeOutQuad, background-color 300ms;
+            transform: translateY(100%);
+        }
+
+        &.__show {
+            max-height: __to_rem(96px, $font-size-base);
+            height: auto;
+            .__btn {
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint-tablet) {
+            height: auto;
+            max-height: __to_rem(75px, $font-size-min);
+            display: none !important;
+        }
+        .__btn {
+            min-width: __to_em(200px, 18px);
+            margin-top: __to_rem(30px, $font-size-base);
+            @media screen and (max-width: $breakpoint-tablet) {
+                margin-top: __to_rem(25px, $font-size-min);
+            }
+            @media screen and (max-width: $breakpoint-mobile - 1px) {
+                min-width: __to_em(145px, 14px);
+            }
+        }
+
+    }
+
+}

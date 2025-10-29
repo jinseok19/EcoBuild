@@ -1,14 +1,6 @@
-# 한글 인코딩 설정 (EUC-KR) - 강화 버전
-AddDefaultCharset EUC-KR
-php_value default_charset "EUC-KR"
-
-# 파일 타입별 charset 설정
-<FilesMatch "\.(html|htm|php)$">
-    Header set Content-Type "text/html; charset=euc-kr"
-</FilesMatch>
-
-# Apache 인코딩 강제 설정
-AddType "text/html; charset=euc-kr" .html .htm .php
+# 한글 인코딩 설정 (UTF-8)
+AddDefaultCharset UTF-8
+AddType "text/html; charset=utf-8" .html .htm .php
 
 # 압축 설정 (선택사항 - 속도 향상)
 <IfModule mod_deflate.c>
@@ -28,4 +20,3 @@ AddType "text/html; charset=euc-kr" .html .htm .php
 
 # index.html을 기본 페이지로 설정
 DirectoryIndex index.html index.htm
-

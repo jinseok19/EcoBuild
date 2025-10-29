@@ -1,0 +1,12 @@
+@import "top";
+@import "cover";
+@import "recent";
+@import "per-years";
+
+.__history-section {
+    // &:not(:last-of-type(1)){padding: 10vw 0;}
+    padding: 10vw 0;
+    &#history4{
+        margin-bottom:0;
+    }
+}

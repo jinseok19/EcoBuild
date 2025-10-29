@@ -1,0 +1,33 @@
+@import "../var";
+
+.__scrolldown {
+    @include position_x;
+    color: #fff;
+    bottom: __to_vw(50px, 1920px);
+    white-space: nowrap;
+    font-size: __to_vw(15px, 1920px);
+    letter-spacing: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    i {
+        margin: __to_em(8px, 15px) __to_em(10px, 15px) 0;
+        display: block;
+        animation: scrolldown .75s infinite alternate-reverse;
+        svg {
+            display: block;
+            @include __wh_to_em(12px, 12px, 15px);
+            margin: 0 auto;
+        }
+    }
+}
+
+
+@keyframes scrolldown {
+    0% {
+        transform: translateY(-20%);
+    }
+    100% {
+        transform: translateY(20%);
+    }
+}
