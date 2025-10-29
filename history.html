@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연혁 - 에코빌드</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        #header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .__header-top {
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        .__header-top ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .__header-top a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .__header-main {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        .__header-main-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0;
+            padding: 0.5rem 0rem;
+        }
+        
+        .__brand img {
+            height: 70px !important;
+            width: auto;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .__brand img:hover {
+            transform: scale(1.05);
+        }
+        
+        .__gnb .__menu {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .__gnb a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .__gnb a:hover {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.1);
+        }
+        
+        .__gnb a.active {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.15);
+            font-weight: bold;
+        }
+        
+        .__gnb a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #1428A0;
+            border-radius: 2px;
+        }
+        
+        /* 메인 비주얼 섹션 */
+        .main-visual {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #1428A0 0%, #0B1B5C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .main-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/img/home/business1.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .main-visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-visual h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-visual p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 120px 0;
+        }
+        
+        .container-boxed {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 타임라인 스타일 */
+        .timeline-section {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1428A0, #0B1B5C);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            width: 45%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            background: #1428A0;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #1428A0;
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            box-shadow: 0 0 0 4px #1428A0;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 푸터 */
+        .__footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .__footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .__footer p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .__header-main-inner {
+                padding: 0.5rem 1rem;
+            }
+            
+            .__brand img {
+                height: 70px !important;
+                max-width: 250px;
+            }
+            
+            .__menu {
+                gap: 1rem;
+            }
+            
+            .__menu li a {
+                font-size: 1rem;
+            }
+            
+            .main-visual h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-visual p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline-section::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-item::before {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="__header-top">
+            <div class="container">
+                <ul>
+                    <li><a href="/company.html">회사소개</a></li>
+                    <li><a href="/product_pages/index_product.html">제품소개</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="__header-main">
+            <div class="container">
+                <div class="__header-main-inner">
+                    <h1 class="__brand"><a href="/"><img src="/assets/img/common/logoC.png" alt="에코빌드"></a></h1>
+                    <nav id="nav">
+                        <div class="__nav-inner">
+                            <div class="__gnb">
+                                <ul class="__menu">
+                                    <li><a href="overview.html" rel="nosublink"><span>기업개요</span></a></li>
+                                    <li><a href="history.html" rel="nosublink" class="active"><span>연혁</span></a></li>
+                                    <li><a href="vision.html" rel="nosublink"><span>비전 및 미션</span></a></li>
+                                    <li><a href="management.html" rel="nosublink"><span>경영진</span></a></li>
+                                    <li><a href="location.html" rel="nosublink"><span>오시는 길</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Visual -->
+    <section class="main-visual">
+        <div class="main-visual-content">
+            <h1>연혁</h1>
+            <p>에코빌드의 성장과 발전 과정을 연도별로 살펴보세요</p>
+        </div>
+    </section>
+
+    <!-- 연혁 Section -->
+    <section class="section">
+        <div class="container container-boxed">
+            <div class="section-header">
+                <h2>연혁</h2>
+                <p>에코빌드의 성장과 발전 과정을 연도별로 살펴보세요.</p>
+            </div>
+            
+            <div class="timeline-section">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h4>혁신 연구소 설립</h4>
+                        <p>친환경 건축자재 연구소 설립으로 기술 혁신 가속화</p>
+                        <p>국제 친환경 건축 인증 획득</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h4>해외 진출</h4>
+                        <p>동남아시아 시장 진출 및 현지 파트너십 체결</p>
+                        <p>연매출 500억원 돌파</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h4>기술 혁신</h4>
+                        <p>AI 기반 에너지 효율 최적화 시스템 개발</p>
+                        <p>친환경 건축자재 특허 10건 출원</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h4>사업 확장</h4>
+                        <p>제조센터 확장 및 생산능력 2배 증가</p>
+                        <p>대형 상업시설 프로젝트 수주</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h4>성장기</h4>
+                        <p>직원수 200명 돌파</p>
+                        <p>주요 도시 친환경 아파트 단지 건설</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h4>기술 개발</h4>
+                        <p>친환경 건축자재 자체 개발 성공</p>
+                        <p>첫 번째 대형 프로젝트 완공</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <h4>사업 다각화</h4>
+                        <p>그린 리모델링 사업 진출</p>
+                        <p>에너지 효율 솔루션 개발</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <h4>초기 성장</h4>
+                        <p>첫 번째 상업용 건물 프로젝트 완공</p>
+                        <p>직원수 50명 돌파</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h4>에코빌드 출발</h4>
+                        <p>에코빌드 설립, 친환경 건축 전문 기업으로 첫 발걸음</p>
+                        <p>지속가능한 건축을 위한 비전 수립</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="__footer">
+        <div class="__footer-content">
+            <p>© 2025 에코빌드. All rights reserved.</p>
+            <p>서울특별시 강남구 테헤란로 123, 에코빌드 빌딩 | TEL: 02-1234-5678 | FAX: 02-1234-5679</p>
+        </div>
+    </footer>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // 모든 timeline-item 요소 관찰
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

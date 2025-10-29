@@ -1,0 +1,109 @@
+@import "../var";
+
+.__page-top-box {
+    .__box {
+        background: #121212;
+    }
+
+    .__bg-area {
+        @include fullsize;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    .__bg {
+        @include fullsize;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+
+        img,
+        video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        video {
+            @include position_xy;
+        }
+
+        img {
+            transition: transform 1000ms $easeOutQuint;
+            will-change: transform;
+        }
+
+        &:after {
+            @include fullsize;
+            top: 0;
+            left: 0;
+            content: '';
+            background: #000;
+            opacity: .1;
+            z-index: 8;
+        }
+    }
+
+
+    .__content-inner {
+        @include fullsize;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: $gutter-mobile;
+    }
+
+    .__page-title {
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+
+        strong {
+            display: block;
+            font-size: __to_vw(100px, 1920px);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.035em;
+            line-height: 1.26;
+            transition: color 1000ms linear;
+            will-change: color;
+            color: rgba(255,255,255,0);
+            position: relative;
+            &:after {
+                content: attr(data-text);
+                -webkit-text-stroke: 2px #fff;
+                -webkit-text-fill-color: transparent;
+                transition: opacity 1000ms linear;
+                will-change: opacity;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-size: 34px;
+                &:after {
+
+                    -webkit-text-stroke-width: 1px;
+                }
+
+            }
+            @media screen and (min-width: $content-box-max-width) {
+                font-size: 100px;
+            }
+        }
+
+        &.__filled {
+            strong {
+                color: rgba(255,255,255,1);
+                &:after {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+

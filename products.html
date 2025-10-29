@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품소개 - 에코빌드</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        #header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .__header-top {
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        .__header-top ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .__header-top a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .__header-main {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        .__header-main-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0;
+            padding: 0.5rem 0rem;
+        }
+        
+        .__brand img {
+            height: 70px !important;
+            width: auto;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .__brand img:hover {
+            transform: scale(1.05);
+        }
+        
+        .__gnb .__menu {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .__gnb a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .__gnb a:hover {
+            color: #2E8B57;
+            background: rgba(46, 139, 87, 0.1);
+        }
+        
+        .__gnb a.active {
+            color: #2E8B57;
+            background: rgba(46, 139, 87, 0.15);
+            font-weight: 600;
+        }
+        
+        .__gnb a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 3px;
+            background: #2E8B57;
+            border-radius: 2px;
+        }
+        /* 메인 비주얼 섹션 */
+        .main-visual {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .main-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/img/home/business2.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .main-visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-visual h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-visual p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 120px 0;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2E8B57;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* 카테고리 필터 */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 1rem 2rem;
+            border: 2px solid #2E8B57;
+            background: white;
+            color: #2E8B57;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.1);
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #2E8B57;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.2);
+        }
+        
+        /* 제품 그리드 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #2E8B57, #32CD32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./data/main/subvisual/20220222/0e9f6a13-e9f8-4119-b1bc-a9f68278880e.jpg') center/cover;
+            opacity: 0.3;
+        }
+        
+        .product-content {
+            padding: 2.5rem;
+        }
+        
+        .product-card h3 {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2E8B57;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .product-card h3::before {
+            content: "🌿";
+            font-size: 1.2rem;
+        }
+        
+        .product-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .features-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 2rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: #2E8B57;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #2E8B57, #228B22);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+        }
+        
+        /* 친환경 쇼핑몰 스타일 */
+        .shop-header {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.85) 0%, rgba(34, 139, 34, 0.85) 50%, rgba(50, 205, 50, 0.85) 100%), url('./assets/img/home/business2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shop-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(46, 139, 87, 0.1);
+            backdrop-filter: blur(1px);
+        }
+        
+        .shop-header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .shop-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .shop-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+        
+        .eco-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .shop-controls {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .shop-controls-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            min-width: 300px;
+        }
+        
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .search-bar i {
+            color: #666;
+            margin-right: 0.5rem;
+        }
+        
+        .filter-sort {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .filter-btn, .sort-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .sort-select:hover {
+            border-color: #1428A0;
+            color: #1428A0;
+        }
+        
+        .products-section {
+            padding: 3rem 0;
+            background: #f8f9fa;
+        }
+        
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(46, 139, 87, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(46, 139, 87, 0.2);
+            border-color: #2E8B57;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #495057;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-badge.new {
+            background: #dc3545;
+        }
+        
+        .product-badge.best {
+            background: #fd7e14;
+        }
+        
+        .product-badge.eco {
+            background: #198754;
+        }
+        
+        .eco-rating {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #ffffff;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #198754;
+            font-weight: 600;
+            border: 1px solid #198754;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-stars .star {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+        
+        .rating-text {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1428A0;
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2E8B57;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: #2E8B57;
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 0.3rem;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        
+        .btn-cart, .btn-wishlist, .btn-quick-view {
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-cart {
+            background: #198754;
+            color: white;
+            flex: 2;
+            border: 1px solid #198754;
+        }
+        
+        .btn-cart:hover {
+            background: #157347;
+            border-color: #157347;
+            transform: translateY(-1px);
+        }
+        
+        .btn-wishlist {
+            background: #ffffff;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+            flex: 1;
+        }
+        
+        .btn-wishlist:hover {
+            background: #f8f9fa;
+            color: #495057;
+            border-color: #adb5bd;
+        }
+        
+        .btn-quick-view {
+            background: #ffffff;
+            color: #0d6efd;
+            border: 1px solid #0d6efd;
+            flex: 1;
+        }
+        
+        .btn-quick-view:hover {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: #ff4757;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .eco-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .eco-score-icon {
+            color: #198754;
+            font-size: 0.9rem;
+        }
+        
+        .eco-score-text {
+            font-size: 0.8rem;
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .cart-icon {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            background: #1428A0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(20, 40, 160, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            border-color: #1428A0;
+            background: #1428A0;
+            color: white;
+        }
+        
+        /* CTA 섹션 */
+        .cta-section {
+            background: linear-gradient(135deg, #2E8B57, #228B22);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: 25px;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./data/main/esg/20240202/ac60d8ce-8b83-4391-b7f4-d183a2474dc0.jpg') center/cover;
+            opacity: 0.2;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #2E8B57;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .main-visual h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-visual p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .category-filter {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .filter-btn {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .cta-section h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--#header-->
+    <header id="header">
+        <div class="__header-inner">
+            <div class="__header-top">
+                <div class="container container-boxed">
+                    <div class="__box">
+                        <ul>
+                            <li><a href="/company.html" target="_self"><span>회사소개</span></a></li>
+                            <li><a href="/product_pages/index_product.html" target="_self"><span>제품소개</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="__header-main">
+                <div class="container container-boxed">
+                    <div class="__header-main-inner">
+                        <h1 class="__brand"><a href="/"><img src="/assets/img/common/logoC.png" alt="에코빌드"></a></h1>
+                        <nav id="nav">
+                            <div class="__nav-inner">
+                                <div class="__gnb">
+                                    <ul class="__menu">
+                                        <li><a href="/company.html" rel="nosublink"><span>회사소개</span></a></li>
+                                        <li><a href="/product_pages/index_product.html" rel="nosublink"><span>제품소개</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <div class="shop-header-content">
+                <h1>에코빌드 제품 카탈로그</h1>
+                <p>친환경 건축 자재 및 솔루션 전문 공급</p>
+                <div class="eco-badge">탄소중립 인증 제품 | 재활용 소재 활용</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Controls -->
+    <section class="shop-controls">
+        <div class="shop-controls-inner">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="제품을 검색하세요..." id="searchInput">
+            </div>
+            <div class="filter-sort">
+                <button class="filter-btn" onclick="toggleFilters()">
+                    <i class="fas fa-filter"></i> 필터
+                </button>
+                <select class="sort-select" id="sortSelect">
+                    <option value="name">이름순</option>
+                    <option value="price-low">가격 낮은순</option>
+                    <option value="price-high">가격 높은순</option>
+                    <option value="newest">최신순</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-container">
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">전체</button>
+                <button class="category-btn" data-category="building">건축자재</button>
+                <button class="category-btn" data-category="energy">에너지</button>
+                <button class="category-btn" data-category="system">시스템</button>
+                <button class="category-btn" data-category="lighting">조명</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" data-category="building" onclick="showProductDetail('eco-brick')">
+                    <div class="product-image">
+                        <i class="fas fa-home"></i>
+                        <div class="product-badge new">신제품</div>
+                        <div class="eco-rating">A+</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">건축자재</div>
+                        <div class="product-name">친환경 벽돌</div>
+                        <div class="rating-stars">
+                            <span class="star">★★★★★</span>
+                            <span class="rating-text">(127)</span>
+                        </div>
+                        <div class="eco-score">
+                            <i class="fas fa-leaf eco-score-icon"></i>
+                            <span class="eco-score-text">탄소저감 85%</span>
+                        </div>
+                        <div class="product-description">재활용 소재 100% 사용, 고강도 친환경 벽돌</div>
+                        <div class="product-price">
+                            <span class="price">₩15,000</span>
+                            <span class="original-price">₩20,000</span>
+                            <span class="discount-badge">25%</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1); event.stopPropagation();">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" onclick="event.stopPropagation();">
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1); event.stopPropagation();">+</button>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart" onclick="addToCartWithQuantity('친환경 벽돌', 15000, this); event.stopPropagation();">
+                                <i class="fas fa-shopping-cart"></i> 주문
+                            </button>
+                            <button class="btn-wishlist" onclick="toggleWishlist(this); event.stopPropagation();">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="btn-quick-view" onclick="showProductDetail('eco-brick'); event.stopPropagation();">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="building">
+                    <div class="product-image">
+                        <i class="fas fa-leaf"></i>
+                        <div class="product-badge">BEST</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">건축자재</div>
+                        <div class="product-name">녹색 단열재</div>
+                        <div class="product-description">천연 소재로 제작된 고효율 단열재입니다.</div>
+                        <div class="product-price">
+                            <span class="price">₩25,000</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart" onclick="addToCart('녹색 단열재', 25000)">
+                                <i class="fas fa-shopping-cart"></i> 장바구니
+                            </button>
+                            <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 빗물 재활용 시스템 -->
+                <div class="product-card" data-category="systems">
+                    <div class="product-image">💧</div>
+                    <div class="product-content">
+                        <h3>빗물 재활용 시스템</h3>
+                        <p>빗물을 수집, 정화하여 생활용수로 재활용할 수 있는 스마트 물 관리 시스템으로 수자원 절약과 환경 보호를 실현합니다.</p>
+                        <ul class="features-list">
+                            <li>자동 수질 관리 시스템으로 안전 보장</li>
+                            <li>IoT 기반 실시간 모니터링 서비스</li>
+                            <li>상수도 사용량 40% 절약 효과</li>
+                            <li>모듈형 확장으로 건물 규모에 맞춤 설치</li>
+                        </ul>
+                        <div class="price-tag">세트당 2,800,000원~</div>
+                    </div>
+                </div>
+
+                <!-- 에코 바닥재 -->
+                <div class="product-card" data-category="materials">
+                    <div class="product-image">🌿</div>
+                    <div class="product-content">
+                        <h3>에코 바닥재</h3>
+                        <p>천연 원료와 재활용 소재로 만든 친환경 바닥재로 실내 공기질을 개선하고 건강한 생활 환경을 제공합니다.</p>
+                        <ul class="features-list">
+                            <li>포름알데히드 방출 등급 E0 최고 등급</li>
+                            <li>천연 항균 코팅으로 위생적인 환경</li>
+                            <li>스크래치 방지 처리로 오래가는 내구성</li>
+                            <li>쉬운 유지보수와 청소</li>
+                        </ul>
+                        <div class="price-tag">㎡당 45,000원~</div>
+                    </div>
+                </div>
+
+                <!-- 스마트 환기 시스템 -->
+                <div class="product-card" data-category="systems">
+                    <div class="product-image">🌪️</div>
+                    <div class="product-content">
+                        <h3>스마트 환기 시스템</h3>
+                        <p>AI 기반 자동 제어로 최적의 실내 공기질을 유지하며 에너지를 절약하는 지능형 환기 시스템입니다.</p>
+                        <ul class="features-list">
+                            <li>PM2.5 미세먼지 99% 차단 필터</li>
+                            <li>열회수율 90% 이상으로 에너지 절약</li>
+                            <li>스마트폰 앱을 통한 원격 제어</li>
+                            <li>에너지효율 1등급 인증 제품</li>
+                        </ul>
+                        <div class="price-tag">세트당 1,200,000원~</div>
+                    </div>
+                </div>
+
+                <!-- 그린월 시스템 -->
+                <div class="product-card" data-category="solutions">
+                    <div class="product-image">🌱</div>
+                    <div class="product-content">
+                        <h3>그린월 시스템</h3>
+                        <p>건물 외벽에 설치하는 수직 정원 시스템으로 도시 열섬현상을 완화하고 공기질을 개선하는 생태 건축 솔루션입니다.</p>
+                        <ul class="features-list">
+                            <li>자동 급수 시스템으로 관리 편의성</li>
+                            <li>계절별 식물 교체 서비스 제공</li>
+                            <li>건물 단열 효과 20% 향상</li>
+                            <li>전문 유지보수 서비스 패키지 포함</li>
+                        </ul>
+                        <div class="price-tag">㎡당 180,000원~</div>
+                    </div>
+                </div>
+
+                <!-- 제로에너지 패키지 -->
+                <div class="product-card" data-category="solutions">
+                    <div class="product-image">⚡</div>
+                    <div class="product-content">
+                        <h3>제로에너지 패키지</h3>
+                        <p>건물이 소비하는 에너지를 자체 생산으로 충당하는 완전한 제로에너지 건축 통합 솔루션입니다.</p>
+                        <ul class="features-list">
+                            <li>에너지 자립도 100% 달성 가능</li>
+                            <li>통합 에너지 모니터링 시스템</li>
+                            <li>20년 성능 보장 및 유지보수</li>
+                            <li>건물별 맞춤형 설계 서비스</li>
+                        </ul>
+                        <div class="price-tag">프로젝트별 견적</div>
+                    </div>
+                </div>
+
+                <!-- 친환경 페인트 -->
+                <div class="product-card" data-category="materials">
+                    <div class="product-image">🎨</div>
+                    <div class="product-content">
+                        <h3>친환경 페인트</h3>
+                        <p>천연 원료로 만든 무독성 페인트로 실내 공기질을 해치지 않고 아름다운 마감을 제공하는 건강한 도료입니다.</p>
+                        <ul class="features-list">
+                            <li>VOC 방출량 5g/L 이하 저방출 제품</li>
+                            <li>천연 안료 사용으로 자연스러운 색감</li>
+                            <li>항균 기능으로 위생적인 벽면</li>
+                            <li>200종 이상의 다양한 색상 선택</li>
+                        </ul>
+                        <div class="price-tag">L당 35,000원~</div>
+                    </div>
+                </div>
+
+                <!-- 에너지 모니터링 솔루션 -->
+                <div class="product-card" data-category="solutions">
+                    <div class="product-image">📊</div>
+                    <div class="product-content">
+                        <h3>에너지 모니터링 솔루션</h3>
+                        <p>건물의 에너지 사용량을 실시간으로 모니터링하고 최적화하는 스마트 에너지 관리 솔루션입니다.</p>
+                        <ul class="features-list">
+                            <li>실시간 에너지 사용량 추적 및 분석</li>
+                            <li>AI 기반 에너지 절약 제안 서비스</li>
+                            <li>탄소발자국 자동 계산 및 리포트</li>
+                            <li>직관적인 모바일 앱 제공</li>
+                        </ul>
+                        <div class="price-tag">월 50,000원~</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3>맞춤형 솔루션이 필요하신가요?</h3>
+                    <p>전문 컨설턴트가 귀하의 프로젝트에 최적화된 친환경 솔루션을 제안해드립니다. 지금 바로 상담을 신청하세요.</p>
+                    <button class="cta-button" onclick="location.href='tel:02-1234-5678'">무료 상담 신청하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Cart Icon -->
+    <div class="cart-icon" onclick="showCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <script>
+        // 쇼핑몰 기능
+        let cart = [];
+        let cartCount = 0;
+        let wishlist = [];
+
+        // 수량 변경 기능
+        function changeQuantity(button, change) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            const currentValue = parseInt(input.value);
+            const newValue = Math.max(1, currentValue + change);
+            input.value = newValue;
+        }
+
+        // 수량과 함께 장바구니에 제품 추가
+        function addToCartWithQuantity(productName, price, button) {
+            const productCard = button.closest('.product-card');
+            const quantityInput = productCard.querySelector('.quantity-input');
+            const quantity = parseInt(quantityInput.value);
+            
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: quantity
+                });
+            }
+            
+            cartCount += quantity;
+            updateCartCount();
+            showAddToCartAnimation();
+            
+            // 성공 메시지 표시
+            showNotification(`${productName} ${quantity}개가 장바구니에 추가되었습니다.`);
+        }
+
+        // 장바구니에 제품 추가 (기본 기능)
+        function addToCart(productName, price) {
+            addToCartWithQuantity(productName, price, { closest: () => ({ querySelector: () => ({ value: 1 }) }) });
+        }
+
+        // 제품 상세 페이지로 이동
+        function showProductDetail(productId) {
+            window.location.href = 'product-detail.html';
+        }
+
+        // 알림 메시지 표시
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #ffffff;
+                color: #333;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                border: 1px solid #dee2e6;
+                border-left: 4px solid #198754;
+                z-index: 10000;
+                font-weight: 500;
+                animation: slideInRight 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2500);
+        }
+
+        // CSS 애니메이션 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 장바구니 개수 업데이트
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cartCount;
+        }
+
+        // 위시리스트 토글
+        function toggleWishlist(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent;
+            const icon = button.querySelector('i');
+            
+            if (icon.classList.contains('far')) {
+                // 위시리스트에 추가
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                button.style.background = '#ff4757';
+                button.style.color = 'white';
+                button.style.borderColor = '#ff4757';
+                
+                wishlist.push(productName);
+                showNotification(`${productName}이(가) 관심 목록에 추가되었습니다.`);
+            } else {
+                // 위시리스트에서 제거
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                button.style.background = '#f8f9fa';
+                button.style.color = '#666';
+                button.style.borderColor = '#ddd';
+                
+                const index = wishlist.indexOf(productName);
+                if (index > -1) {
+                    wishlist.splice(index, 1);
+                }
+                showNotification(`${productName}이(가) 관심 목록에서 제거되었습니다.`);
+            }
+        }
+
+        // 장바구니 표시
+        function showCart() {
+            if (cart.length === 0) {
+                showNotification('장바구니가 비어있습니다.');
+                return;
+            }
+            
+            let cartContent = '장바구니 내용:\n\n';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartContent += `${item.name} x${item.quantity} - ₩${itemTotal.toLocaleString()}\n`;
+            });
+            
+            cartContent += `\n총 금액: ₩${total.toLocaleString()}`;
+            cartContent += '\n\n주문을 진행하시겠습니까?';
+            
+            if (confirm(cartContent)) {
+                showNotification('주문이 접수되었습니다. 담당자가 연락드리겠습니다.');
+                cart = [];
+                cartCount = 0;
+                updateCartCount();
+            }
+        }
+
+        // 장바구니 추가 애니메이션
+        function showAddToCartAnimation() {
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartIcon.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // 필터 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const searchInput = document.getElementById('searchInput');
+            const sortSelect = document.getElementById('sortSelect');
+
+            // 카테고리 필터
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const category = this.getAttribute('data-category');
+                    filterProducts(category);
+                });
+            });
+
+            // 검색 기능
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                    const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
+                    
+                    if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // 정렬 기능
+            sortSelect.addEventListener('change', function() {
+                const sortBy = this.value;
+                const visibleCards = Array.from(productCards).filter(card => 
+                    card.style.display !== 'none'
+                );
+
+                visibleCards.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.price').textContent.replace(/[^\d]/g, ''));
+                    const priceB = parseInt(b.querySelector('.price').textContent.replace(/[^\d]/g, ''));
+                    const nameA = a.querySelector('.product-name').textContent;
+                    const nameB = b.querySelector('.product-name').textContent;
+
+                    switch(sortBy) {
+                        case 'price-low':
+                            return priceA - priceB;
+                        case 'price-high':
+                            return priceB - priceA;
+                        case 'name':
+                            return nameA.localeCompare(nameB);
+                        default:
+                            return 0;
+                    }
+                });
+
+                const grid = document.getElementById('productsGrid');
+                visibleCards.forEach(card => grid.appendChild(card));
+            });
+
+            function filterProducts(category) {
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (category === 'all' || cardCategory === category) {
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(-20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+
+            // 초기 애니메이션
+            productCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경영진 - 에코빌드</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        #header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .__header-top {
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        .__header-top ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .__header-top a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .__header-main {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        .__header-main-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0;
+            padding: 0.5rem 0rem;
+        }
+        
+        .__brand img {
+            height: 70px !important;
+            width: auto;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .__brand img:hover {
+            transform: scale(1.05);
+        }
+        
+        .__gnb .__menu {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .__gnb a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .__gnb a:hover {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.1);
+        }
+        
+        .__gnb a.active {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.15);
+            font-weight: bold;
+        }
+        
+        .__gnb a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #1428A0;
+            border-radius: 2px;
+        }
+        
+        /* 메인 비주얼 섹션 */
+        .main-visual {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #1428A0 0%, #0B1B5C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .main-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/img/home/business1.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .main-visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-visual h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-visual p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 120px 0;
+        }
+        
+        .container-boxed {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 경영진 그리드 */
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .management-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .management-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .management-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1428A0, #0B1B5C);
+        }
+        
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1428A0, #0B1B5C);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .management-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .management-card .position {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .management-card .name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .management-card .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .management-card .career {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .management-card .career h4 {
+            font-size: 1rem;
+            color: #1428A0;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .management-card .career ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .management-card .career li {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .management-card .career li::before {
+            content: '•';
+            color: #1428A0;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* 조직도 섹션 */
+        .organization-section {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .organization-section h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1428A0;
+            margin-bottom: 3rem;
+        }
+        
+        .org-chart {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .org-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .org-member {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 150px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .org-member:hover {
+            border-color: #1428A0;
+            transform: translateY(-2px);
+        }
+        
+        .org-member.ceo {
+            background: linear-gradient(135deg, #1428A0, #0B1B5C);
+            color: white;
+            border-color: #1428A0;
+        }
+        
+        .org-member h4 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .org-member p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .org-line {
+            width: 2px;
+            height: 30px;
+            background: #1428A0;
+            margin: 0 auto;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 푸터 */
+        .__footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .__footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .__footer p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .__header-main-inner {
+                padding: 0.5rem 1rem;
+            }
+            
+            .__brand img {
+                height: 70px !important;
+                max-width: 250px;
+            }
+            
+            .__menu {
+                gap: 1rem;
+            }
+            
+            .__menu li a {
+                font-size: 1rem;
+            }
+            
+            .main-visual h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-visual p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .management-card {
+                padding: 2rem;
+            }
+            
+            .organization-section {
+                padding: 2rem;
+            }
+            
+            .org-chart {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .org-line {
+                width: 30px;
+                height: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="__header-top">
+            <div class="container">
+                <ul>
+                    <li><a href="/company.html">회사소개</a></li>
+                    <li><a href="/product_pages/index_product.html">제품소개</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="__header-main">
+            <div class="container">
+                <div class="__header-main-inner">
+                    <h1 class="__brand"><a href="/"><img src="/assets/img/common/logoC.png" alt="에코빌드"></a></h1>
+                    <nav id="nav">
+                        <div class="__nav-inner">
+                            <div class="__gnb">
+                                <ul class="__menu">
+                                    <li><a href="overview.html" rel="nosublink"><span>기업개요</span></a></li>
+                                    <li><a href="history.html" rel="nosublink"><span>연혁</span></a></li>
+                                    <li><a href="vision.html" rel="nosublink"><span>비전 및 미션</span></a></li>
+                                    <li><a href="management.html" rel="nosublink" class="active"><span>경영진</span></a></li>
+                                    <li><a href="location.html" rel="nosublink"><span>오시는 길</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Visual -->
+    <section class="main-visual">
+        <div class="main-visual-content">
+            <h1>경영진</h1>
+            <p>에코빌드를 이끌어가는 경영진을 소개합니다</p>
+        </div>
+    </section>
+
+    <!-- 경영진 Section -->
+    <section class="section">
+        <div class="container container-boxed">
+            <div class="section-header">
+                <h2>경영진</h2>
+                <p>에코빌드를 이끌어가는 경영진의 프로필을 확인하세요.</p>
+            </div>
+            
+            <div class="management-grid">
+                <div class="management-card fade-in-up">
+                    <div class="profile-image">김</div>
+                    <h3>김친환</h3>
+                    <div class="position">대표이사</div>
+                    <div class="name">Kim Chin-Hwan</div>
+                    <div class="description">
+                        친환경 건축 분야 20년 경력의 전문가로, 지속가능한 건축 문화 확산에 앞장서고 있습니다.
+                    </div>
+                    <div class="career">
+                        <h4>주요 경력</h4>
+                        <ul>
+                            <li>서울대학교 건축학과 졸업</li>
+                            <li>MIT 건축대학원 석사</li>
+                            <li>삼성물산 건설부문 상무</li>
+                            <li>한국친환경건축협회 이사</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="management-card fade-in-up">
+                    <div class="profile-image">이</div>
+                    <h3>이지속</h3>
+                    <div class="position">부사장</div>
+                    <div class="name">Lee Ji-Sok</div>
+                    <div class="description">
+                        기술 혁신과 연구개발을 담당하며, 차세대 친환경 건축 기술 개발에 주력하고 있습니다.
+                    </div>
+                    <div class="career">
+                        <h4>주요 경력</h4>
+                        <ul>
+                            <li>연세대학교 토목공학과 졸업</li>
+                            <li>스탠포드대학교 환경공학 박사</li>
+                            <li>LG건설 기술연구소장</li>
+                            <li>한국건설기술연구원 선임연구원</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="management-card fade-in-up">
+                    <div class="profile-image">박</div>
+                    <h3>박미래</h3>
+                    <div class="position">사업본부장</div>
+                    <div class="name">Park Mi-Rae</div>
+                    <div class="description">
+                        사업 전략 수립과 고객 관계 관리에 전문성을 가지고 있으며, 신규 사업 발굴에 주력하고 있습니다.
+                    </div>
+                    <div class="career">
+                        <h4>주요 경력</h4>
+                        <ul>
+                            <li>고려대학교 경영학과 졸업</li>
+                            <li>하버드 비즈니스 스쿨 MBA</li>
+                            <li>현대건설 사업개발팀장</li>
+                            <li>대한건설협회 정책위원</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="management-card fade-in-up">
+                    <div class="profile-image">최</div>
+                    <h3>최혁신</h3>
+                    <div class="position">기술이사</div>
+                    <div class="name">Choi Hyuk-Sin</div>
+                    <div class="description">
+                        AI와 IoT 기술을 건축에 접목하여 스마트 건축 솔루션 개발에 전념하고 있습니다.
+                    </div>
+                    <div class="career">
+                        <h4>주요 경력</h4>
+                        <ul>
+                            <li>KAIST 전산학과 졸업</li>
+                            <li>MIT 컴퓨터과학 박사</li>
+                            <li>구글 AI 연구소 연구원</li>
+                            <li>한국과학기술원 교수</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="organization-section">
+                <h3>조직도</h3>
+                <div class="org-chart">
+                    <div class="org-level">
+                        <div class="org-member ceo">
+                            <h4>김친환</h4>
+                            <p>대표이사</p>
+                        </div>
+                    </div>
+                    
+                    <div class="org-line"></div>
+                    
+                    <div class="org-level">
+                        <div class="org-member">
+                            <h4>이지속</h4>
+                            <p>부사장</p>
+                        </div>
+                        <div class="org-member">
+                            <h4>박미래</h4>
+                            <p>사업본부장</p>
+                        </div>
+                        <div class="org-member">
+                            <h4>최혁신</h4>
+                            <p>기술이사</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="__footer">
+        <div class="__footer-content">
+            <p>© 2025 에코빌드. All rights reserved.</p>
+            <p>서울특별시 강남구 테헤란로 123, 에코빌드 빌딩 | TEL: 02-1234-5678 | FAX: 02-1234-5679</p>
+        </div>
+    </footer>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // 모든 카드 요소 관찰
+        document.querySelectorAll('.management-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.__animated {
+    position: relative;
+    display: block;
+    &[data-hidden="true"] {
+        overflow: hidden;
+    }
+     > * {
+         position: relative;
+         display: block;
+     }
+}
+
+
+.__number[data-counting] {
+    line-height: 1;
+    display: flex;
+    .__char {
+        display: block;
+    }
+}

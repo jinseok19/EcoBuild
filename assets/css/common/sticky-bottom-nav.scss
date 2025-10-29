@@ -1,0 +1,176 @@
+@import "../var";
+
+.__sticky-bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    bottom: 0;
+    z-index: $footer-z-index - 1;
+    @media screen and (max-width: $breakpoint-mobile) {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    transition: transform 500ms $easeInOutQuart;
+    border-top: 1px solid #EEEEEE;
+    &.__hide {
+        transform: translateY(102%);
+    }
+    $font-size: 13px;
+    .__grid__ {
+        font-size: $font-size;
+        min-height: __to_em(48px, $font-size);
+        padding: __to_em(18px, $font-size) 0;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .__indices {
+        margin: 0 auto;
+        white-space: nowrap;
+        @media screen and (max-width: $breakpoint-mobile) {
+            display: none;
+            font-size: 11px;
+        }
+        ul {
+            display: flex;
+            margin: 0 $gutter-mobile * -1;
+            li {
+                padding: 0 $gutter-mobile;
+            }
+            li+li {
+                margin-left: __to_em(60px - $gutter-mobile * 2, $font-size);
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin-left: __to_em(40px - $gutter-mobile * 2, $font-size);
+                }
+            }
+            a {
+                color: #888;
+            }
+
+            li.__current {
+
+                a {
+                    color: $color-primary;
+                    font-weight: 700;
+                }
+
+            }
+        }
+    }
+
+    .__prev,
+    .__next {
+        a {
+            display: flex;
+            align-items: center;
+            color: #888;
+            transition: color 300ms ease;
+            will-change: color;
+            i {
+                display: block;
+                @include __wh_to_em(24px, 24px, 13px);
+                box-sizing: border-box;
+                border: 1px solid #E5E5E5;
+                background: #fff;
+                border-radius: 50%;
+                position: relative;
+
+                transition: background-color 300ms ease, border-color 300ms ease;
+                will-change: background-color, border-color;
+                svg {
+                    display: block;
+                    @include __wh_to_em(12px, 12px, 13px);
+                    @include position_xy;
+                    path {
+                        fill: #888;
+                        transition: fill 300ms ease;
+                        will-change: fill;
+                    }
+                }
+            }
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-weight: 700;
+                color: $color-primary;
+
+                i {
+                    background-color: $color-primary;
+                    border-color: $color-primary;
+
+                    svg {
+                        path {
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+            @media (hover: hover), (-ms-high-contrast:none) {
+                &:hover {
+                    font-weight: 700;
+                    color: $color-primary;
+
+                    i {
+                        background-color: $color-primary;
+                        border-color: $color-primary;
+
+                        svg {
+                            path {
+                                fill: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    .__next {
+        margin-left: auto;
+        a {
+            span {
+                margin-right: __to_em(6px, $font-size);
+            }
+        }
+    }
+    .__prev {
+        margin-right: auto;
+        a {
+            span {
+                margin-left: __to_em(6px, $font-size);
+            }
+            i {
+                transform: rotate(180deg);
+            }
+
+        }
+    }
+
+    .__history-indices {
+        display: block !important;
+        a {
+            > span {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .__year {
+                    display: block;
+                    line-height: 1.1;
+
+                    font-size: __to_em(18px, $font-size);
+                    letter-spacing: 0;
+                }
+                .__label {
+                    display: block;
+                    line-height: 1.1;
+
+                    margin-top: .325em;
+                    font-size: __to_em(13px, $font-size);
+                    font-weight: 400 !important;
+                }
+            }
+        }
+    }
+}

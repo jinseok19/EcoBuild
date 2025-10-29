@@ -1,0 +1,165 @@
+@import "../var";
+
+#homeGlobalNetwork {
+    word-break: keep-all;
+    .__box {
+        background-color: #e7f3f6;
+        border-radius: __to_rem(8px, $font-size-base);
+        overflow: hidden;
+        isolation: isolate;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        .__bg {
+            margin-top: __to_vw(-380px, 1920px);
+            @media screen and (min-width: $content-box-max-width) {
+                margin-top: -380px;
+            }
+            position: relative;
+            z-index: 1;
+            img {
+                display: block;
+                width: 100%;
+            }
+
+            overflow: hidden;
+            .__anim {
+                @include fullsize;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+            }
+        }
+        .__box-inner {
+            padding: $gutter-mobile;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: __to_vw(380px, 1920px);
+            max-height: 380px;
+            margin: 0 auto 20px;
+            z-index: 2;
+            p {
+                margin-bottom: __to_rem(30px, $font-size-base);
+                font-size: __to_rem(20px, $font-size-base);
+                line-height: __to_em(36px, 20px);
+                strong {
+                    font-weight: 700;
+                    color: $color-primary;
+                }
+                small {
+                    font-size: __to_em(15px, $font-size-base);
+                    display: inline-block;
+                    margin-top: __to_em(6px, 15px);
+                    color: #666;
+                }
+
+                @media screen and (max-width: $breakpoint-tablet) {
+                    font-size: 12px;
+                    small {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .__info {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .__split {
+                    width: 1px;
+                    background: #000;
+                    opacity: .2;
+                    height: __to_rem(50px, $font-size-base);
+                    margin: 0 3rem;
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        height: 28px;
+                        margin: 0 2rem;
+                    }
+                }
+                dl {
+                    display: flex;
+                    align-items: center;
+                    font-size: __to_rem(27px, $font-size-base);
+
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        font-size: 15px;
+                    }
+
+                    dt {
+                        font-weight: 700;
+                        margin-right: 1em;
+                    }
+
+                    dd {
+                        display: flex;
+                        align-items: center;
+
+                        font-weight: 700;
+                        strong {
+                            font-size: __to_rem(64px, $font-size-base);
+                            margin-right: .1em;
+                            @media screen and (max-width: $breakpoint-tablet) {
+                                font-size: 36px;
+                            }
+                        }
+
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+    #homeGlobalNetwork {
+        .__box {
+
+            .__bg {
+                position: relative;
+                margin-top:__to_per(-180px, $breakpoint-mobile);
+
+            }
+            .__box-inner {
+                max-width: __to_rem(400px, $font-size-min);
+                height: 200px;
+                p {
+                    margin-bottom: __to_em(20px, $font-size-min);
+                    br {
+                        display: none;
+                    }
+
+                    span {
+                        display: block;
+                    }
+
+                }
+
+                .__info {
+                   
+                    .__split {
+                        margin: 0 1.6rem;
+                        height: __to_rem(20px, $font-size-min);
+                    }
+                    dl {
+
+                        font-size: __to_rem(14px, $font-size-min);
+
+                        dd {
+
+                            strong {
+                                font-size: __to_rem(26px, $font-size-min);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

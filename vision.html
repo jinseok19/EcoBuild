@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비전 및 미션 - 에코빌드</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        #header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .__header-top {
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        .__header-top ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .__header-top a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .__header-main {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        .__header-main-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0;
+            padding: 0.5rem 0rem;
+        }
+        
+        .__brand img {
+            height: 70px !important;
+            width: auto;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .__brand img:hover {
+            transform: scale(1.05);
+        }
+        
+        .__gnb .__menu {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .__gnb a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .__gnb a:hover {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.1);
+        }
+        
+        .__gnb a.active {
+            color: #1428A0;
+            background: rgba(20, 40, 160, 0.15);
+            font-weight: bold;
+        }
+        
+        .__gnb a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #1428A0;
+            border-radius: 2px;
+        }
+        
+        /* 메인 비주얼 섹션 */
+        .main-visual {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #1428A0 0%, #0B1B5C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .main-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/img/home/business1.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .main-visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-visual h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-visual p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 120px 0;
+        }
+        
+        .container-boxed {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 비전 미션 그리드 */
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .vision-card, .mission-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vision-card:hover, .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1428A0, #0B1B5C);
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+        
+        .vision-card h3, .mission-card h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #1428A0;
+        }
+        
+        .mission-card h3 {
+            color: #28a745;
+        }
+        
+        .vision-card p, .mission-card p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* 핵심 가치 */
+        .values-section {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1428A0;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 경영 철학 */
+        .philosophy-section {
+            background: linear-gradient(135deg, #1428A0 0%, #0B1B5C 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 4rem;
+            text-align: center;
+        }
+        
+        .philosophy-section h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        
+        .philosophy-section p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 푸터 */
+        .__footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .__footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .__footer p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .__header-main-inner {
+                padding: 0.5rem 1rem;
+            }
+            
+            .__brand img {
+                height: 70px !important;
+                max-width: 250px;
+            }
+            
+            .__menu {
+                gap: 1rem;
+            }
+            
+            .__menu li a {
+                font-size: 1rem;
+            }
+            
+            .main-visual h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-visual p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .vision-card, .mission-card {
+                padding: 2rem;
+            }
+            
+            .values-section, .philosophy-section {
+                padding: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="__header-top">
+            <div class="container">
+                <ul>
+                    <li><a href="/company.html">회사소개</a></li>
+                    <li><a href="/product_pages/index_product.html">제품소개</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="__header-main">
+            <div class="container">
+                <div class="__header-main-inner">
+                    <h1 class="__brand"><a href="/"><img src="/assets/img/common/logoC.png" alt="에코빌드"></a></h1>
+                    <nav id="nav">
+                        <div class="__nav-inner">
+                            <div class="__gnb">
+                                <ul class="__menu">
+                                    <li><a href="overview.html" rel="nosublink"><span>기업개요</span></a></li>
+                                    <li><a href="history.html" rel="nosublink"><span>연혁</span></a></li>
+                                    <li><a href="vision.html" rel="nosublink" class="active"><span>비전 및 미션</span></a></li>
+                                    <li><a href="management.html" rel="nosublink"><span>경영진</span></a></li>
+                                    <li><a href="location.html" rel="nosublink"><span>오시는 길</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Visual -->
+    <section class="main-visual">
+        <div class="main-visual-content">
+            <h1>비전 및 미션</h1>
+            <p>에코빌드가 추구하는 가치와 미래 비전을 소개합니다</p>
+        </div>
+    </section>
+
+    <!-- 비전 및 미션 Section -->
+    <section class="section">
+        <div class="container container-boxed">
+            <div class="section-header">
+                <h2>비전 및 미션</h2>
+                <p>지속가능한 미래를 위한 에코빌드의 비전과 미션을 확인하세요.</p>
+            </div>
+            
+            <div class="vision-mission-grid">
+                <div class="vision-card fade-in-up">
+                    <h3>비전 (Vision)</h3>
+                    <p>지속가능한 건축을 통한 친환경 미래 구현과 탄소중립 사회 실현</p>
+                </div>
+                
+                <div class="mission-card fade-in-up">
+                    <h3>미션 (Mission)</h3>
+                    <p>혁신적인 친환경 건축 기술과 솔루션으로 사람과 환경이 조화로운 건축 문화를 선도합니다</p>
+                </div>
+            </div>
+            
+            <div class="values-section">
+                <h3 style="text-align: center; font-size: 2.5rem; color: #1428A0; margin-bottom: 1rem;">핵심 가치</h3>
+                <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 2rem;">에코빌드가 추구하는 핵심 가치입니다</p>
+                
+                <div class="values-grid">
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">🌱</div>
+                        <h4>환경 친화</h4>
+                        <p>모든 건축 활동에서 환경을 최우선으로 고려하며, 지속가능한 건축 문화를 실현합니다</p>
+                    </div>
+                    
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">💡</div>
+                        <h4>혁신</h4>
+                        <p>최신 기술과 창의적 아이디어로 건축 산업의 새로운 패러다임을 제시합니다</p>
+                    </div>
+                    
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">🤝</div>
+                        <h4>협력</h4>
+                        <p>고객, 파트너, 지역사회와의 상생을 통해 함께 성장하는 건축 생태계를 구축합니다</p>
+                    </div>
+                    
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">⭐</div>
+                        <h4>품질</h4>
+                        <p>최고 수준의 건축 품질과 서비스를 제공하여 고객 만족을 실현합니다</p>
+                    </div>
+                    
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">🔬</div>
+                        <h4>연구개발</h4>
+                        <p>지속적인 연구개발을 통해 미래 지향적인 건축 솔루션을 제공합니다</p>
+                    </div>
+                    
+                    <div class="value-card fade-in-up">
+                        <div class="value-icon">🌍</div>
+                        <h4>사회적 책임</h4>
+                        <p>건축을 통한 사회적 가치 창출과 지역사회 발전에 기여합니다</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="philosophy-section">
+                <h3>경영 철학</h3>
+                <p>"건축은 단순한 공간을 만드는 것이 아니라, 미래 세대를 위한 지속가능한 환경을 조성하는 것입니다. 에코빌드는 사람과 자연이 조화를 이루는 건축 문화를 통해 더 나은 미래를 만들어가겠습니다."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="__footer">
+        <div class="__footer-content">
+            <p>© 2025 에코빌드. All rights reserved.</p>
+            <p>서울특별시 강남구 테헤란로 123, 에코빌드 빌딩 | TEL: 02-1234-5678 | FAX: 02-1234-5679</p>
+        </div>
+    </footer>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // 모든 카드 요소 관찰
+        document.querySelectorAll('.vision-card, .mission-card, .value-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

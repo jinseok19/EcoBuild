@@ -1,0 +1,465 @@
+@import "../var";
+
+#businessOurBusiness {
+    .__grid__ {
+        flex-direction: column;
+        .__col__ {
+            overflow: hidden;
+        }
+    }
+    .__accordion {
+        border-radius: __to_rem(8px, $font-size-base);
+        isolation: isolate;
+        overflow: hidden;
+        position: relative;
+        word-break: keep-all;
+        .__accordion-header {
+            background: #F5F5F5;
+            border-radius: __to_rem(8px, $font-size-base);
+            padding: __to_rem(80px, $font-size-base) __to_rem(120px, $font-size-base);
+            display: flex;
+            //align-items: center;
+            transition: background-color 400ms, color 400ms;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+
+
+            .__title-area {
+                width: 50%;
+                box-sizing: border-box;
+                padding-right: __to_rem(160px, $font-size-base);
+
+                .__title {
+                    display: flex;
+                    align-items: center;
+
+                    .__no {
+                        letter-spacing: 0;
+                        display: block;
+                        width: __to_em(120px, 50px);
+                        min-width: __to_em(120px, 50px);
+                        margin-top: __to_rem(10px, $font-size-base);
+                    }
+                    span {
+                        display: block;
+                        strong {
+                            display: block;
+                            margin-bottom: __to_em(16px, 50px);
+                        }
+
+                        small {
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+
+            .__description {
+                flex: 1;
+                p {
+                    word-break: keep-all;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                }
+            }
+
+            .__toggle {
+                display: block;
+                margin-top: __to_rem(12px, $font-size-base);
+                margin-left: __to_rem(64px, $font-size-base);
+                @include __wh_to_rem(64px, 64px, $font-size-base);
+                cursor: pointer;
+                span {
+                    display: block;
+                }
+                svg {
+                    display: block;
+                    @include __wh_to_rem(64px, 64px, $font-size-base);
+                    circle,
+                    path {
+                        transition: all 400ms $easeInOutCirc;
+                        transform-origin: 50% 50%;
+
+                    }
+                    //.__l1 {
+                    //    transform: rotate(-180deg);
+                    //}
+                    //.__l2 {
+                    //    transform: rotate(-180deg);
+                    //}
+                }
+
+                @media screen and (max-width: $breakpoint-tablet - 1px) {
+                    @include __wh_to_rem(34px, 34px, $font-size-min);
+                    svg {
+                        @include __wh_to_rem(34px, 34px, $font-size-min);
+
+                    }
+                }
+            }
+
+            //건설부문 영문에서만 small 태그 제거, 가운데 정렬 (하단에도 있음. construction-eng 클래스 검색)
+            &.construction-eng {
+                &.construction {
+                    .__title {
+                        .__no {
+                            margin-top: 0 !important;
+                        }
+                        span > strong {
+                            margin-bottom: 0 !important;
+                        }
+                    }
+                    .__description {
+                        display: flex !important;
+                        align-items: center;
+
+                        @media screen and (max-width: $breakpoint-mobile - 1px) {
+                            display: none !important;
+                            order: 3;
+                            width: 100%;
+                            flex: initial;
+                            margin-top: __to_em(40px, $font-size-min);
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width: $breakpoint-tablet - 1px) {
+                padding: __to_rem(42px, $font-size-base) __to_rem(64px, $font-size-base);
+
+                .__toggle {
+                    margin-top: __to_rem(19px, $font-size-base);
+                }
+            }
+
+            @media screen and (max-width: $breakpoint-mobile - 1px) {
+                padding: __to_rem(35px, $font-size-min) __to_rem(20px, $font-size-min);
+                flex-wrap: wrap;
+                align-items: center;
+
+                .__title-area { 
+                    order: 1;
+                    flex: 1;
+                    padding-right: __to_em(30px, $font-size-base);
+                    width: auto;
+                }
+
+                .__toggle {
+                    order: 2;
+                    margin-left: auto;
+                    margin-top: __to_rem(10px, $font-size-base);
+                }
+
+                .__description {
+                    display: none;
+                    order: 3;
+                    width: 100%;
+                    flex: initial;
+                    margin-top: __to_em(40px, $font-size-min);
+                }
+            }
+
+        }
+
+        .__accordion-body {
+            background: #132746;
+            position: relative;
+            z-index: 1;
+            margin-top: __to_rem(-10px, $font-size-base);
+            padding-top: __to_rem(10px, $font-size-base);
+            overflow: hidden;
+            opacity: 0;
+            height: 0;
+            .__inner {
+                display: block;
+                padding: __to_rem(80px, $font-size-base) __to_rem(120px, $font-size-base);
+                
+                @media screen and (max-width: $breakpoint-tablet - 1px) {
+                    padding: __to_rem(40px, $font-size-base) __to_rem(64px, $font-size-base);
+                }
+
+                @media screen and (max-width: $breakpoint-mobile - 1px) {
+                    padding: __to_rem(40px, $font-size-min) __to_rem(20px, $font-size-min);
+                }
+            }
+            .__our-business-work-list {
+                margin: __to_rem(-16px, $font-size-base);
+                @media screen and (max-width: $breakpoint-tablet - 1px) {
+                    margin: __to_rem(-8px, $font-size-min);
+                }
+                .swiper {
+                    overflow: visible;
+                    .swiper-slide {
+                        width: 25%;
+                        box-sizing: border-box;
+                        min-width: 208px;
+
+                        &.slide_cont_2 {
+                            display: flex;
+                            width: 50%;
+
+                            @media screen and (max-width: $breakpoint-tablet) {
+                                min-width: 416px;
+                            }
+                        }
+
+                        &.slide_cont_3 {
+                            display: flex;
+                            width: 75%;
+
+                            @media screen and (max-width: $breakpoint-tablet) {
+                                min-width: 624px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .__work-list-item {
+                padding: __to_rem(16px, $font-size-base);
+                box-sizing: border-box;
+                @media screen and (max-width: $breakpoint-tablet - 1px) {
+                    padding: __to_rem(8px, $font-size-min);
+                }
+                .__box {
+                    border-radius: __to_rem(8px, $font-size-base);
+                    isolation: isolate;
+                    position: relative;
+                    display: block;
+                    overflow: hidden;
+                    cursor: initial;
+                    .__img {
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            object-fit: cover;
+                        }
+
+                        &:after {
+                            @include dimmed4(0,0,0);
+                            top: auto;
+                            height: 100%;
+                        }
+                    }
+
+                    .__detail {
+                        @include fullsize();
+                        top: 0;
+                        left: 0;
+                        box-sizing: border-box;
+                        padding: __to_rem(32px, $font-size-base);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        color: #fff;
+
+                        @media all and (max-width: $breakpoint-mobile) {
+                            padding: __to_rem(20px, $font-size-base);
+                        }
+
+                        &:before {
+                            -webkit-transition: opacity .3s;
+                            -moz-transition: opacity .3s;
+                            -ms-transition: opacity .3s;
+                            -o-transition: opacity .3s;
+                            transition: opacity .3s;
+                        }
+
+                        &.construction {
+                            &:before {
+                                @include dimmed2(28,156,158);
+                                opacity: 0;
+                            }
+                        }
+
+                        &.trading {
+                            &:before {
+                                @include dimmed2(29,127,191);
+                                opacity: 0;
+                            }
+                        }
+
+                        &.fashion {
+                            &:before {
+                                @include dimmed2(142, 31, 255);
+                                opacity: 0;
+                            }
+                        }
+
+                        &.resort {
+                            &:before {
+                                @include dimmed2(86, 163, 17);
+                                opacity: 0;
+                            }
+                        }
+
+                        .year {
+                            position: absolute;
+                            top: 32px;
+                            left: 32px;
+
+                            @media all and (max-width: $breakpoint-mobile) {
+                                top: 20px;
+                                left: 20px;
+                            }
+                        }
+
+                        >   * {
+                            position: relative;
+                        }
+                        hr {
+                            opacity: .6;
+                            border: 0;
+                            height: 1px;
+                            background: #fff;
+                            margin: __to_rem(18px, $font-size-base) 0;
+                            width: 100%;
+                            display: block;
+                        }
+
+                        .__description {
+                            display: none;
+                        }
+                    }
+                    .__more {
+                        @include position_xy;
+                        white-space: nowrap;
+                    }
+
+                    .__detail {
+                        &:hover {
+                            .__description {
+                            }
+
+                            &:before {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        &.__active {
+            .__accordion-header {
+                color: #fff;
+
+                &.construction {
+                    background: $color-secondary1;
+
+                    .__toggle {
+                        svg {
+                            path {
+                                fill: $color-secondary1;
+                            }
+                        }
+                    }
+                }
+
+                &.trading {
+                    background: $color-secondary2;
+
+                    .__toggle {
+                        svg {
+                            path {
+                                fill: $color-secondary2;
+                            }
+                        }
+                    }
+                }
+
+                &.fashion {
+                    background: $color-secondary3;
+
+                    .__toggle {
+                        svg {
+                            path {
+                                fill: $color-secondary3;
+                            }
+                        }
+                    }
+                }
+
+                &.resort {
+                    background: $color-secondary5;
+
+                    .__toggle {
+                        svg {
+                            path {
+                                fill: $color-secondary5;
+                            }
+                        }
+                    }
+                }
+
+                .__toggle {
+                    svg {
+                        circle {
+                            fill: #fff;
+                        }
+
+                        path {
+                            fill: $color-secondary1;
+                        }
+
+                        .__l1 {
+                            transform: rotate(-90deg);
+                        }
+                        .__l2 {
+                            transform: rotate(-180deg);
+                        }
+                    }
+                }
+
+                .__description {
+                    p {
+                        display: initial;
+                        -webkit-box-orient: initial;
+                        -webkit-line-clamp: initial;
+                        overflow: initial;
+                    }
+
+                    display: block !important;
+                }
+
+                &.construction-eng {
+                    &.construction {
+                        .__description {
+                            display: flex !important;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+
+            .__accordion-body {
+                opacity: 1;
+                height: auto;
+
+            }
+        }
+    }
+}
+
+body.en {
+    #businessOurBusiness {
+        .__accordion {
+            .__accordion-header {
+                .__title-area {
+                    .__title {
+                        span {
+                            strong {
+                                word-break: break-all;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

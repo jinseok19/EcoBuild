@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>친환경 벽돌 - 에코빌드</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/common/favicon_1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2E8B57;
+            text-decoration: none;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin: 1rem 0;
+        }
+        
+        .breadcrumb a {
+            color: #2E8B57;
+            text-decoration: none;
+        }
+        
+        /* 제품 상세 스타일 */
+        .product-detail {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-images {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2E8B57, #228B22, #32CD32);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+        
+        .thumbnail-images {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2E8B57, #32CD32);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #2E8B57;
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding-left: 2rem;
+        }
+        
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        
+        .rating-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .eco-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .eco-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .eco-badge.carbon {
+            background: #e8f5e8;
+            color: #2E8B57;
+            border: 1px solid #2E8B57;
+        }
+        
+        .eco-badge.recycled {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #1976d2;
+        }
+        
+        .product-price {
+            margin-bottom: 2rem;
+        }
+        
+        .current-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2E8B57;
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 1rem;
+        }
+        
+        .discount-percent {
+            background: #ff4757;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .purchase-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-label {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2E8B57;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: #2E8B57;
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 80px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-add-cart {
+            flex: 2;
+            background: linear-gradient(135deg, #2E8B57, #228B22);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-add-cart:hover {
+            background: linear-gradient(135deg, #228B22, #1e6b1e);
+            transform: translateY(-2px);
+        }
+        
+        .btn-wishlist {
+            flex: 1;
+            background: white;
+            color: #2E8B57;
+            border: 2px solid #2E8B57;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-wishlist:hover {
+            background: #2E8B57;
+            color: white;
+        }
+        
+        /* 제품 정보 탭 */
+        .product-tabs {
+            margin-top: 3rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            color: #2E8B57;
+            border-bottom-color: #2E8B57;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .specs-table th,
+        .specs-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .specs-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #2E8B57;
+        }
+        
+        .review-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reviewer-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .review-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-info {
+                padding-left: 0;
+            }
+            
+            .product-title {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .tab-button {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/product_pages/index_product.html" class="logo">에코빌드</a>
+                <a href="/product_pages/index_product.html" style="color: #2E8B57; text-decoration: none;">← 제품 목록으로 돌아가기</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/product_pages/index_product.html">제품</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="/product_pages/index_product.html">건축자재</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>친환경 벽돌</span>
+        </div>
+
+        <!-- Product Detail -->
+        <div class="product-detail">
+            <div class="product-layout">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="thumbnail-images">
+                        <div class="thumbnail active">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <h1 class="product-title">친환경 벽돌</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">4.8점 (127개 리뷰)</span>
+                    </div>
+                    
+                    <div class="eco-badges">
+                        <div class="eco-badge carbon">탄소 저감 85%</div>
+                        <div class="eco-badge recycled">재활용 소재 100%</div>
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="current-price">₩15,000</span>
+                        <span class="original-price">₩20,000</span>
+                        <span class="discount-percent">25% 할인</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        재활용 재료 100%로 제작된 고강도 친환경 벽돌입니다. 
+                        기존 벽돌 대비 탄소 배출량을 85% 줄이면서도 뛰어난 내구성과 단열 성능을 자랑합니다. 
+                        친환경 건축의 필수 자재로 지속가능한 건축 문화를 선도합니다.
+                    </div>
+                    
+                    <div class="purchase-section">
+                        <div class="quantity-selector">
+                            <span class="quantity-label">수량:</span>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                                <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn-add-cart" onclick="addToCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                장바구니 담기
+                            </button>
+                            <button class="btn-wishlist" onclick="toggleWishlist()">
+                                <i class="far fa-heart"></i>
+                                찜하기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTab('description')">상세정보</button>
+                    <button class="tab-button" onclick="showTab('specs')">제품규격</button>
+                    <button class="tab-button" onclick="showTab('reviews')">리뷰 (127)</button>
+                    <button class="tab-button" onclick="showTab('qa')">Q&A</button>
+                </div>
+
+                <div id="description" class="tab-content active">
+                    <h3>제품 상세정보</h3>
+                    <p>에코빌드의 친환경 벽돌은 100% 재활용 소재로 제작되어 환경 보호와 건축 품질을 동시에 만족시키는 혁신적인 건축 자재입니다.</p>
+                    <br>
+                    <h4>주요 특징:</h4>
+                    <ul style="margin-left: 2rem; line-height: 2;">
+                        <li>재활용 소재 100% 사용으로 친환경성 극대화</li>
+                        <li>기존 벽돌 대비 85% 탄소 배출량 저감</li>
+                        <li>우수한 단열 성능 (열전도율: 0.12 W/mK)</li>
+                        <li>고강도 압축강도 (25 N/mm²)</li>
+                        <li>내구성 50년 보장</li>
+                        <li>다양한 색상 및 텍스처 선택 가능</li>
+                    </ul>
+                </div>
+
+                <div id="specs" class="tab-content">
+                    <h3>제품 규격</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>규격</th>
+                            <td>190mm × 90mm × 57mm</td>
+                        </tr>
+                        <tr>
+                            <th>중량</th>
+                            <td>2.3kg</td>
+                        </tr>
+                        <tr>
+                            <th>압축강도</th>
+                            <td>25 N/mm²</td>
+                        </tr>
+                        <tr>
+                            <th>열전도율</th>
+                            <td>0.12 W/mK</td>
+                        </tr>
+                        <tr>
+                            <th>흡수율</th>
+                            <td>12% 이하</td>
+                        </tr>
+                        <tr>
+                            <th>내화성능</th>
+                            <td>1시간 내화</td>
+                        </tr>
+                        <tr>
+                            <th>친환경 인증</th>
+                            <td>HB 마크, 탄소성적표지</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="reviews" class="tab-content">
+                    <h3>고객 리뷰</h3>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">김건축</span>
+                            <span class="review-date">2024-03-15</span>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            정말 만족스러운 제품입니다. 친환경적이면서도 품질이 뛰어나네요. 
+                            시공도 편리하고 단열 효과도 기존 벽돌보다 훨씬 좋습니다.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">박시공</span>
+                            <span class="review-date">2024-03-10</span>
+                        </div>
+                        <div class="review-rating">★★★★☆</div>
+                        <div class="review-text">
+                            환경을 생각하는 마음에서 구매했는데, 성능도 좋고 가격도 합리적이에요. 
+                            다음 프로젝트에서도 사용할 예정입니다.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">이친환</span>
+                            <span class="review-date">2024-03-08</span>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            재활용 소재로 만들어졌다고 해서 품질을 걱정했는데, 
+                            오히려 기존 제품보다 더 좋은 것 같아요. 강력 추천합니다!
+                        </div>
+                    </div>
+                </div>
+
+                <div id="qa" class="tab-content">
+                    <h3>자주 묻는 질문</h3>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name"><strong>Q: 배송은 얼마나 걸리나요?</strong></span>
+                        </div>
+                        <div class="review-text">
+                            A: 주문 후 3-5일 내 배송됩니다. 대량 주문의 경우 별도 협의가 필요할 수 있습니다.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name"><strong>Q: 시공 방법이 기존 벽돌과 다른가요?</strong></span>
+                        </div>
+                        <div class="review-text">
+                            A: 기존 벽돌과 동일한 방법으로 시공 가능합니다. 별도의 특수 공법이 필요하지 않습니다.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name"><strong>Q: A/S 기간은 어떻게 되나요?</strong></span>
+                        </div>
+                        <div class="review-text">
+                            A: 제품 품질에 대해 5년간 보증하며, 시공 결함에 대해서는 1년간 무상 A/S를 제공합니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let quantity = 1;
+
+        function changeQuantity(change) {
+            const input = document.getElementById('quantity');
+            quantity = Math.max(1, parseInt(input.value) + change);
+            input.value = quantity;
+        }
+
+        function addToCart() {
+            const quantity = document.getElementById('quantity').value;
+            alert(`친환경 벽돌 ${quantity}개가 장바구니에 추가되었습니다.`);
+        }
+
+        function toggleWishlist() {
+            const btn = document.querySelector('.btn-wishlist');
+            const icon = btn.querySelector('i');
+            
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                btn.style.background = '#2E8B57';
+                btn.style.color = 'white';
+                alert('관심 목록에 추가되었습니다.');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                btn.style.background = 'white';
+                btn.style.color = '#2E8B57';
+                alert('관심 목록에서 제거되었습니다.');
+            }
+        }
+
+        function showTab(tabName) {
+            // 모든 탭 버튼과 콘텐츠에서 active 클래스 제거
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // 선택된 탭 버튼과 콘텐츠에 active 클래스 추가
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // 썸네일 이미지 클릭 이벤트
+        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+            thumb.addEventListener('click', function() {
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 메인 이미지 변경 (여기서는 아이콘만 변경)
+                const icons = ['fa-home', 'fa-layer-group', 'fa-cube', 'fa-th-large'];
+                const mainImage = document.querySelector('.main-image i');
+                mainImage.className = `fas ${icons[index]}`;
+            });
+        });
+    </script>
+</body>
+</html>
