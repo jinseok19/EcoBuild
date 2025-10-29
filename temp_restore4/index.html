@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--                ### 팝업 시작 ###            -->
+<script language="javascript">
+    <!--
+    function readCookie(cookiename) {
+        var Found = false;
+
+        cookiedata = document.cookie;
+        if (cookiedata.indexOf(cookiename) >= 0) {
+            Found = true;
+        }
+
+        return Found;
+    }
+
+    function setCookie(name, value, expiredays) {
+        var todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + expiredays);
+        document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    }
+    //-->
+</script>
+<!--                ### 팝업 끝 ###            -->
+
+<head>
+    <title>그린코리아21</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="keywords" content="키워드" />
+    <meta name="description" content="검색어" />
+    <link rel="stylesheet" type="text/css" href="/common/css/efront.css" />
+    <script type="text/javascript" src="/common/js/efront.js"></script>
+
+    <script type='text/javascript' src='/common/js/jquery-1.7.min.js'></script>
+    <script type='text/javascript' src='/common/js/slides.jquery.js'></script>
+
+
+    <script type="text/javascript">
+        var TimeOut = 300;
+        var currentLayer = null;
+        var currentitem = null;
+
+        var currentLayerNum = 0;
+        var noClose = 0;
+        var closeTimer = null;
+
+        // Open Hidden Layer
+        function mopen(n) {
+            var l = document.getElementById("menu" + n);
+            var mm = document.getElementById("mmenu" + n);
+
+            if (l) {
+                mcancelclosetime();
+                l.style.visibility = 'visible';
+
+                if (currentLayer && (currentLayerNum != n))
+                    currentLayer.style.visibility = 'hidden';
+
+                currentLayer = l;
+                currentitem = mm;
+                currentLayerNum = n;
+            } else if (currentLayer) {
+                currentLayer.style.visibility = 'hidden';
+                currentLayerNum = 0;
+                currentitem = null;
+                currentLayer = null;
+            }
+        }
+
+        // Turn On Close Timer
+        function mclosetime() {
+            closeTimer = window.setTimeout(mclose, TimeOut);
+        }
+
+        // Cancel Close Timer
+        function mcancelclosetime() {
+            if (closeTimer) {
+                window.clearTimeout(closeTimer);
+                closeTimer = null;
+            }
+        }
+
+        // Close Showed Layer
+        function mclose() {
+            if (currentLayer && noClose != 1) {
+                currentLayer.style.visibility = 'hidden';
+                currentLayerNum = 0;
+                currentLayer = null;
+                currentitem = null;
+            } else {
+                noClose = 0;
+            }
+
+            currentLayer = null;
+            currentitem = null;
+        }
+
+        // Close Layer Then Click-out
+        document.onclick = mclose;
+    </script>
+
+</head>
+
+<body>
+    <!--레이아웃 시작-->
+    <div id="wrapbody">
+        <div id="wrap">
+
+            <!--상단 시작-->
+            <div id="header">
+
+                <div class="box">
+
+                    <!--상단 유틸리티 시작-->
+                    <ul class="unb_top">
+                        <li><a href="/member/login.php" target="_self"><a href='/member/login.php?prev=/index.php'>로그인</a></a>
+                        </li>
+                        <li>ㅣ</li>
+                        <li><a href="/member/join.php" target="_self"><a href='/member/join.php'>회원가입</a></a>
+                        </li>
+                        <li>ㅣ</li>
+                        <li><a href="/member/order_list.php" target="_self">주문/배송조회</a></li>
+                        <li>ㅣ</li>
+                        <li><a href="/member/mypage.php" target="_self">장바구니</a></li>
+                        <li>ㅣ</li>
+                        <li><a href="/member/wishlist.php" target="_self">관심상품</a></li>
+                        <li>ㅣ</li>
+                        <li><a href="/customer/customer01.php" target="_self">고객센터</a></li>
+                        <li>ㅣ</li>
+                        <li><a href="javascript:window.external.AddFavorite('http://greenkorea.1004hp.com', '그린코리아21') "><span class="red">+ 즐겨찾기추가</span></a></li>
+                    </ul>
+                    <!--상단 유틸리티 끝-->
+
+                    <div class="clear">
+                    </div>
+
+                    <div style="height:96px;">
+                        <!--좌측 메뉴 시작-->
+
+                        <!--로고 시작-->
+                        <div class="logo_top">
+                            <a href="/index.php" target="_self"><img src="/common/images/top_logo.gif" alt="" /></a>
+                        </div>
+                        <!--로고 끝-->
+
+                        <!--좌측 메뉴 끝-->
+
+                        <div class="unb_gnb">
+                            <link href="/admin/search/skin/searchBasic/style.css" rel="stylesheet" type="text/css" />
+                            <form action="/member/search.php" method="get">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td><input name="total_searchkey" value="" type="text" class="input_search" size="50"></td>
+                                        <td style="padding-left:3px"><input type="image" src="/admin/search/skin/searchBasic/image/btn_search.gif" width="45" height="33" border="0"></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+
+
+                        <!--우측 메뉴 시작-->
+                        <div class="unb_gnb2">
+                            <ul>
+                                <li><img src="/common/images/주문.gif" alt="" /></li>
+                            </ul>
+                        </div>
+                        <!--우측 메뉴 끝-->
+
+                    </div>
+
+                    <div class="clear">
+                    </div>
+
+                    <!--상단 글로벌네비게이션 시작-->
+                    <div class="gnb">
+
+                        <div class="menu">
+                            <ul id="m">
+                                <li>
+                                    <a href="/company/company01.php" class="menu" id="mmenu0" onmouseover="mopen(0);" onmouseout="mclosetime();"><img src="/common/images/m01.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu0" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+                                        <a href="/company/company01.php">인사말</a>
+                                        <a href="/company/company02.php">조직도</a>
+                                        <a href="/company/company03.php">판매대리점</a>
+                                        <a href="/company/company04.php">오시는길</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/equipment/equipment01.php" class="menu" id="mmenu1" onmouseover="mopen(1);" onmouseout="mclosetime();"><img src="/common/images/m02.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+                                        <a href="/equipment/equipment01.php">GK-자동투입장치</a>
+                                        <a href="/equipment/equipment02.php">GK-자동분사장치</a>
+                                        <a href="/equipment/equipment03.php">GK-자동분사장치Ⅱ</a>
+                                        <a href="/equipment/equipment04.php">GK-장치,부품</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/product/product01.php" class="menu" id="mmenu2" onmouseover="mopen(2);" onmouseout="mclosetime();"><img src="/common/images/m03.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+                                        <a href="/product/product01.php">배관관리용품</a>
+                                        <a href="/product/product02.php">특수제거제</a>
+                                        <a href="/product/product03.php">탈취제</a>
+                                        <a href="/product/product04.php">친환경 미생물제품</a>
+                                        <a href="/product/product05.php">수처리 약품</a>
+                                        <a href="/product/product06.php">수처리 미생물제품</a>
+                                        <a href="/product/product07.php">수처리 장치</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/data/data01.php" class="menu" id="mmenu3" onmouseover="mopen(3);" onmouseout="mclosetime();"><img src="/common/images/m04.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu3" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+                                        <a href="/data/data01.php">설명서</a>
+                                        <a href="/data/data02.php">MSDS</a>
+                                        <!--<a href="/data/data03.php">이용안내</a>-->
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/customer/customer01.php" class="menu" id="mmenu4" onmouseover="mopen(4);" onmouseout="mclosetime();"><img src="/common/images/m05.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu4" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+                                        <a href="/customer/customer01.php">공지사항</a>
+                                        <!--<a href="/customer/customer02.php">게시판</a>-->
+                                        <!--<a href="/customer/customer03.php">문의사항</a>-->
+                                        <a href="/customer/customer05.php">구매후기</a>
+                                        <a href="/customer/customer06.php">질문과 답변</a>
+                                        <a href="/customer/customer04.php">견적의뢰</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/shopping/shopping01.php" class="menu" id="mmenu5" onmouseover="mopen(5);" onmouseout="mclosetime();"><img src="/common/images/m06.png"></a>
+                                    <div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu5" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!--상단 글로벌네비게이션 끝-->
+
+                    <!--상단 비주얼 시작-->
+                    <div class="main_visual">
+
+                        <!--<img src="/common/images/main_visual2.png" width="1213" height="362" alt="">-->
+
+
+                        <div id="s_container">
+                            <div id="example">
+                                <div id="slides">
+                                    <div class="slides_container">
+                                        <img src="/common/images/main_visual01.jpg" width="1150" height="500" alt="">
+                                        <img src="/common/images/main_visual02.jpg" width="1150" height="500" alt="">
+                                        <img src="/common/images/main_visual03.jpg" width="1150" height="500" alt="">
+                                        <!--<img src="/common/images/main_visual04.jpg" width="1150" height="500" alt="">
+									<img src="/common/images/main_visual05.jpg" width="1150" height="500" alt="">-->
+
+                                    </div>
+                                    <div class="prev"> <a href="#"> <img src="/common/images/main_arrow_left.png"  alt="" class="arr_left"></a> </div>
+                                    <div class="next"> <a href="#"> <img src="/common/images/main_arrow_right.png" alt="" class="arr_right"></a> </div>
+                                    <script>
+                                        $(function() {
+                                            $('#slides').slides({
+                                                preload: true,
+                                                preloadImage: 'img/loading.gif',
+                                                play: 4000,
+                                                pause: 2500,
+                                                hoverPause: true
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--상단 비주얼 끝-->
+
+                </div>
+                <!--상단 끝-->
+
+
+                <!--컨테이너 시작-->
+                <div id="main_container">
+
+
+
+                </div>
+                <!--컨테이너 끝-->
+
+                <div class="clear">
+                </div>
+
+                <!--중간컨텐츠 시작-->
+                <div id="center_contents">
+
+                    <div class="new">
+                        <p id="tab"><img src="/common/images/notice.gif" alt="" /></p>
+                        <div class="n_box">
+
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer01.php?ptype=view&idx=5442">* 2025년 여름휴가 공지 안내 *</a></td>
+                                    <td align="right">2025.07.15</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer01.php?ptype=view&idx=5436">* 2024년 여름 휴가 공지 안내 *</a></td>
+                                    <td align="right">2024.07.31</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer01.php?ptype=view&idx=5423">* 2024년 설날 연휴 휴무 공지 안내 *</a></td>
+                                    <td align="right">2024.02.05</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer01.php?ptype=view&idx=5420">* 2023년 추석연휴 택배 공지 *</a></td>
+                                    <td align="right">2023.09.18</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer01.php?ptype=view&idx=5418">* 8월14일 택배쉬는날 공지 *</a></td>
+                                    <td align="right">2023.08.11</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <p class="more"><a href="/customer/customer01.php"><img src="/common/images/btn_plus.gif" border="0" alt="더보기" /></a></p>
+                    </div>
+
+                    <div class="quick">
+                        <p id="tab"><img src="/common/images/qna.gif" alt="" /></p>
+                        <div class="n_box">
+
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer06.php?ptype=view&idx=5445">카드 결제가 안됩니다.</a></td>
+                                    <td align="right">2025.10.09</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer06.php?ptype=passwd&mode=view&idx=5444">MSDS 자료요청 (오물용해제, 요석제거제)</a></td>
+                                    <td align="right">2025.09.16</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer06.php?ptype=view&idx=5441">유지방 분해제 25년 개정된 자료 요청 </a></td>
+                                    <td align="right">2025.07.10</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer06.php?ptype=view&idx=5440">제품 문의</a></td>
+                                    <td align="right">2025.02.17</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/customer/customer06.php?ptype=passwd&mode=view&idx=5439">GK-유지방분해제 문의드립니다.</a></td>
+                                    <td align="right">2024.11.25</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                        <p class="more"><a href="/customer/customer06.php"><img src="/common/images/btn_plus.gif" border="0" alt="더보기" /></a></p>
+                    </div>
+
+                </div>
+                <!--중간컨텐츠 끝-->
+
+                <!--하단컨텐츠 시작-->
+                <div id="bottom_contents">
+                    <div class="customer">
+                        <p id="tab"><img src="/common/images/cs.gif" alt="" /></p>
+                        <div class="n_box">
+                            <img src="/common/images/main_customer.gif" alt="" /><br />
+                            <!--<a href="#"><img src="/common/images/main_customer1.gif" style="padding-left:7px" alt="" /></a>
+						<a href="#"><img src="/common/images/main_customer2.gif" alt="" /></a>-->
+                        </div>
+                    </div>
+
+                    <div class="notice">
+                        <p id="tab"><img src="/common/images/자료실.gif" alt="" /></p>
+                        <div class="n_box">
+
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/data/data01.php?ptype=view&idx=5182">GK-수처리종균제</a></td>
+                                    <td align="right">2018.07.09</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/data/data01.php?ptype=view&idx=5165">GK-자동분사장치 대</a></td>
+                                    <td align="right">2016.03.03</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/data/data01.php?ptype=view&idx=5164">GK-자동공급장치 </a></td>
+                                    <td align="right">2016.03.03</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/data/data01.php?ptype=view&idx=5163">GK-자동분사장치 </a></td>
+                                    <td align="right">2016.03.03</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="5" height="20"><img src="/admin/bbsmain/image/point.gif" width="3" height="3"></td>
+                                    <td width="5"></td>
+                                    <td align="left"><a href="/data/data01.php?ptype=view&idx=5162">GK-분말종균제 설명서 </a></td>
+                                    <td align="right">2016.03.03</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <p class="more"><a href="/data/data01.php"><img src="/common/images/btn_plus.gif" border="0" alt="더보기" /></a></p>
+                    </div>
+
+                    <div class="equipment">
+                        <p id="tab"><img src="/common/images/기계.gif" alt="" /></p>
+                        <div class="n_box">
+                            <a href="/equipment/equipment01.php"><img src="/common/images/기계장치.gif" alt="" /></a>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <p id="tab"><img src="/common/images/shop_tit.gif" alt="" /></p>
+                        <div class="n_box">
+                            <a href="/company/company03.php"><img src="/common/images/shop_ban.gif" alt="" /></a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--하단컨텐츠 끝-->
+
+            </div>
+        </div>
+        <!--레이아웃 끝-->
+
+
+        <!--하단레이아웃 시작-->
+        <div id="footerbody">
+            <div id="footer">
+
+                <!--하단내용 시작-->
+                <div class="box">
+
+                    <div class="footer_img">
+                        <img src="/common/images/footer_logo.gif" alt="" />
+                    </div>
+
+                    <div class="copy">
+                        <ul class="unb_footer">
+                            <li><a href="/info/info01.php" target="_self">이용약관</a></li>
+                            <li>|</li>
+                            <li><a href="/company/company04.php" target="_self">오시는길</a></li>
+                            <li>|</li>
+                            <li><a href="/member/join.php" target="_self"><span class="red">개인정보취급방침</span></a></li>
+                        </ul>
+
+                        <div class="clear">
+                        </div>
+
+                        <div class="copyright">
+                            상호: 지케이그린코리아 주식회사 &nbsp;&nbsp; 경기도 광명시 금오로707번길 43-4 &nbsp;&nbsp; 대표이사 : 김익수 <br/> 사업자등록번호: 775-88-01061 &nbsp;&nbsp; 통신판매업신고번호:제 2018-서울구로-1010 호 &nbsp;&nbsp; TEL : 02-2060-2018 &nbsp;&nbsp; FAX : 02-6455-4936 &nbsp;&nbsp;
+                            E-mail: kim0kim0@naver.com<br/> Copyright(c)2010greenkorea21.All Right Reserved.<br/>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clear">
+                </div>
+                <!--하단내용 끝-->
+
+            </div>
+        </div>
+        <!--하단레이아웃 끝-->
+
+</body>
+
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>그린코리아21</title> 
+<meta http-equiv="content-type" content="text/html;charset=euc-kr" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<meta name="keywords" content="키워드" />
+<meta name="description" content="검색어" />
+<link rel="stylesheet" type="text/css" href="/common/css/efront.css" />
+<script type="text/javascript" src="/common/js/efront.js"></script> 
+
+<script type='text/javascript' src='/common/js/jquery-1.7.min.js'></script>
+<script type='text/javascript' src='/common/js/slides.jquery.js'></script>
+
+
+<script type="text/javascript">
+
+var TimeOut         = 300;
+var currentLayer    = null;
+var currentitem     = null;
+
+var currentLayerNum = 0;
+var noClose         = 0;
+var closeTimer      = null;
+
+// Open Hidden Layer
+function mopen(n)
+{
+    var l  = document.getElementById("menu"+n);
+    var mm = document.getElementById("mmenu"+n);
+	
+    if(l)
+    {
+        mcancelclosetime();
+        l.style.visibility='visible';
+
+        if(currentLayer && (currentLayerNum != n))
+            currentLayer.style.visibility='hidden';
+
+        currentLayer = l;
+        currentitem = mm;
+        currentLayerNum = n;			
+    }
+    else if(currentLayer)
+    {
+        currentLayer.style.visibility='hidden';
+        currentLayerNum = 0;
+        currentitem = null;
+        currentLayer = null;
+	}
+}
+
+// Turn On Close Timer
+function mclosetime()
+{
+    closeTimer = window.setTimeout(mclose, TimeOut);
+}
+
+// Cancel Close Timer
+function mcancelclosetime()
+{
+    if(closeTimer)
+    {
+        window.clearTimeout(closeTimer);
+        closeTimer = null;
+    }
+}
+
+// Close Showed Layer
+function mclose()
+{
+    if(currentLayer && noClose!=1)
+    {
+        currentLayer.style.visibility='hidden';
+        currentLayerNum = 0;
+        currentLayer = null;
+        currentitem = null;
+    }
+    else
+    {
+        noClose = 0;
+    }
+
+    currentLayer = null;
+    currentitem = null;
+}
+
+// Close Layer Then Click-out
+document.onclick = mclose; 
+</script>
+
+</head>  
+<body>
+<!--레이아웃 시작-->
+<div id="wrapbodys">
+<div id="wrap">
+
+	<!--상단 시작-->
+	<div id="header">
+
+		<div class="box">
+
+			<!--상단 유틸리티 시작-->
+			<ul class="unb_top">
+				<li><a href="/member/login.html" target="_self"><a href='/member/login.html?prev=/customer/customer06.html'>로그인</a></a></li>
+				<li>ㅣ</li>
+				<li><a href="/member/join.html" target="_self"><a href='/member/join.html'>회원가입</a></a></li>
+				<li>ㅣ</li>
+				<li><a href="/member/order_list.html" target="_self">주문/배송조회</a></li>
+				<li>ㅣ</li>
+				<li><a href="/member/mypage.html" target="_self">장바구니</a></li>
+				<li>ㅣ</li>
+				<li><a href="/member/wishlist.html" target="_self">관심상품</a></li>
+				<li>ㅣ</li>
+				<li><a href="/customer/customer01.html" target="_self">고객센터</a></li>
+				<li>ㅣ</li>
+				<li><a href="javascript:window.external.AddFavorite('http://greenkorea.1004hp.com', '그린코리아21') "><span class="red">+ 즐겨찾기추가</span></a></li>
+			</ul>
+			<!--상단 유틸리티 끝-->				
+
+		<div class="clear">
+		</div>
+
+
+
+
+
+
+	<div class="clear">
+			</div>
+
+			<div style="height:96px;">
+						<!--좌측 메뉴 시작-->
+
+						<!--로고 시작-->
+							<div class="logo_top">
+								<a href="/index.html" target="_self"><img src="/common/images/top_logo.gif" alt="" /></a>
+							</div>
+							<!--로고 끝-->
+						
+						<!--좌측 메뉴 끝-->
+
+							<div class="unb_gnb">
+							<link href="/admin/search/skin/searchBasic/style.css" rel="stylesheet" type="text/css" />
+<form action="/member/search.html" method="get">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input name="total_searchkey" value="" type="text" class="input_search" size="50"></td>
+    <td style="padding-left:3px"><input type="image" src="/admin/search/skin/searchBasic/image/btn_search.gif" width="45" height="33" border="0"></td>
+  </tr>
+</table>
+</form>							
+						</div>
+
+
+
+						<!--우측 메뉴 시작-->
+						<div class="unb_gnb2">
+							<ul>
+								
+								
+								<li><img src="/common/images/주문.gif" alt="" /></li>
+
+							</ul>
+						</div>
+						<!--우측 메뉴 끝-->
+
+			</div>
+
+		<div class="clear">
+		</div>
+
+
+				<!--상단 글로벌네비게이션 시작-->
+				<div class="gnb">
+
+					<div class="menu">
+						<ul id="m">
+							<li>
+							<a href="/company/company01.html" class="menu" id="mmenu0" onmouseover="mopen(0);" onmouseout="mclosetime();"><img src="/common/images/m01.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu0" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+								<a href="/company/company01.html">인사말</a>
+								<a href="/company/company02.html">조직도</a>
+								<a href="/company/company03.html">판매대리점</a>
+								<a href="/company/company04.html">오시는길</a>
+							</div>
+							</li>
+							<li>
+							<a href="/equipment/equipment01.html" class="menu" id="mmenu1" onmouseover="mopen(1);" onmouseout="mclosetime();"><img src="/common/images/m02.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu1" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+								<a href="/equipment/equipment01.html">GK-자동투입장치</a>
+								<a href="/equipment/equipment02.html">GK-자동분사장치</a>
+								<a href="/equipment/equipment03.html">GK-자동분사장치Ⅱ</a>
+								<a href="/equipment/equipment04.html">GK-장치,부품</a>
+							</div>
+							</li>
+							<li>
+							<a href="/product/product01.html" class="menu" id="mmenu2" onmouseover="mopen(2);" onmouseout="mclosetime();"><img src="/common/images/m03.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu2" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+								<a href="/product/product01.html">배관관리용품</a>
+								<a href="/product/product02.html">특수제거제</a>
+								<a href="/product/product03.html">탈취제</a>
+								<a href="/product/product04.html">친환경 미생물제품</a>
+								<a href="/product/product05.html">수처리 약품</a>
+								<a href="/product/product06.html">수처리 미생물제품</a>
+								<a href="/product/product07.html">수처리 장치</a>
+							</div>
+							</li>
+							<li>
+							<a href="/data/data01.html" class="menu" id="mmenu3" onmouseover="mopen(3);" onmouseout="mclosetime();"><img src="/common/images/m04.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu3" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+								<a href="/data/data01.html">설명서</a>
+								<a href="/data/data02.html">MSDS</a>
+								<!--<a href="/data/data03.html">이용안내</a>-->
+							</div>
+							</li>
+							<li>
+							<a href="/customer/customer01.html" class="menu" id="mmenu4" onmouseover="mopen(4);" onmouseout="mclosetime();"><img src="/common/images/m05.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu4" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+								<a href="/customer/customer01.html">공지사항</a>
+								<!--<a href="/customer/customer02.html">게시판</a>-->
+								<!--<a href="/customer/customer03.html">문의사항</a>-->
+								<a href="/customer/customer05.html">구매후기</a>
+								<a href="/customer/customer06.html">질문과 답변</a>
+								<a href="/customer/customer04.html">견적의뢰</a>
+							</div>
+							</li>
+							<li>
+							<a href="/shopping/shopping01.html" class="menu" id="mmenu5" onmouseover="mopen(5);" onmouseout="mclosetime();"><img src="/common/images/m06.png"></a>
+							<div class="submenu" style="background:#e6e6e6; filter:alpha(opacity=80);" id="menu5" onmouseover="mcancelclosetime()" onmouseout="mclosetime();">
+
+							</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<!--상단 글로벌네비게이션 끝-->
+		
+	</div>
+	<!--상단 끝-->		
+			<!--왼쪽메뉴 시작-->
+			<div class="snb">
+
+			  <h2>고객센터</h2>
+			  <div class="leftArea">
+				<ul>
+				  <li ><a href="customer01.html">공지사항</a></li>
+				  <!--<li ><a href="customer02.html">게시판</a></li>-->
+				  <!--<li ><a href="customer03.html">문의사항</a></li>-->
+				  <li ><a href="customer05.html">구매후기</a></li>
+				  <li id="on"><a href="customer06.html">질문과 답변</a></li>
+				  <li ><a href="customer04.html">견적의뢰</a></li>
+				</ul>
+			  </div>
+
+			<!--<div class="banner">
+			 <img src="/common/images/banner01.jpg" alt="" />
+			 <p style="padding-top:10px"><img src="/common/images/banner02.jpg" alt="" /></p>
+			 <p style="padding-top:10px"><img src="/common/images/banner03.jpg" alt="" /></p>
+			</div>-->
+
+			</div>
+			<!--왼쪽메뉴 끝-->
+	<!--컨테이너 시작-->
+	<div id="container">
+		
+		<!--컨테이너 박스 시작-->
+		<div class="box">
+
+			<!--컨텐츠 시작-->
+			<div class="subcontents">
+
+				<!--타이틀 시작-->
+				<div class="box_title">
+				
+					<div class="title">
+						<span class="blue">CUSTOMER</span><br />질문과 답변
+					</div>
+
+					<div class="path">
+						HOME > 고객센터 > <strong>질문과 답변</strong>
+					</div>
+
+				</div>
+				<div class="clear">
+				</div>
+				<!--타이틀 끝-->
+
+				<!--내용 시작-->		
+				<div class="text_sub">
+					<script Language="JavaScript" src="/admin/js/lib.js"></script><link href="/admin/bbs/skin/bbsBasic/style.css" rel="stylesheet" type="text/css">
+<!-- 카테고리 -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr><td align="left"></td></tr>
+</table>
+<!-- 카테고리 끝-->
+
+<!-- 게시물 시작 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="10" height="2" bgcolor="#a9a9a9"></td>
+  </tr>
+  <tr bgcolor="#f9f9f9">
+  	<td width="1%"></td>
+    <td width="8%" height="30" align="center"><strong>번호</strong></td>
+    <td align="center"><strong>제목</strong></td>
+    <td width="12%" align="center"><strong>작성자</strong></td>
+    <td width="12%" align="center"><strong>작성일</strong></td>
+    <td width="8%" align="center"><strong>조회</strong></td>
+    <!--		<td width="8%" align="center"><strong>추천</strong></td>
+    -->                    
+  </tr>  
+  <tr>
+    <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+  </tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">122</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5445&page=1&code=qna'>카드 결제가 안됩니다.</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">소비자</td>
+	  <td align="center">2025-10-09</td>
+	  <td align="center">120</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">121</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=passwd&mode=view&idx=5444&page=1&code=qna'>MSDS 자료요청 (오물용해제, 요석제거제)</a>  <img src='/admin/bbs/skin/bbsBasic/image/lock.gif' border='0' align='absmiddle'>   </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">임효선</td>
+	  <td align="center">2025-09-16</td>
+	  <td align="center">1</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">120</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5441&page=1&code=qna'>유지방 분해제 25년 개정된 자료 요청 </a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">백승종합상사</td>
+	  <td align="center">2025-07-10</td>
+	  <td align="center">127</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">119</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5440&page=1&code=qna'>제품 문의</a>     <a href='/admin/bbs/down.html?code=qna&idx=5440&no=1'><img src='/admin/bbs/skin/bbsBasic/image/file.gif' border='0' align='absmiddle'></a></td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">호텔</td>
+	  <td align="center">2025-02-17</td>
+	  <td align="center">115</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">118</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=passwd&mode=view&idx=5439&page=1&code=qna'>GK-유지방분해제 문의드립니다.</a>  <img src='/admin/bbs/skin/bbsBasic/image/lock.gif' border='0' align='absmiddle'>   </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">신세계</td>
+	  <td align="center">2024-11-25</td>
+	  <td align="center">2</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">117</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=passwd&mode=view&idx=5437&page=1&code=qna'>편의점 사용 관련 문의드립니다. </a>  <img src='/admin/bbs/skin/bbsBasic/image/lock.gif' border='0' align='absmiddle'>   </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">GS</td>
+	  <td align="center">2024-08-26</td>
+	  <td align="center">5</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">116</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5435&page=1&code=qna'>석회제거제로 석고도 제거되나요?</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">석회제거제</td>
+	  <td align="center">2024-07-27</td>
+	  <td align="center">185</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">115</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5433&page=1&code=qna'>부식문의</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">김</td>
+	  <td align="center">2024-05-28</td>
+	  <td align="center">190</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">114</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5432&page=1&code=qna'>싱크대 하수구 막힌곳엔 어떤제품 사용해야하나요?</a>     <a href='/admin/bbs/down.html?code=qna&idx=5432&no=1'><img src='/admin/bbs/skin/bbsBasic/image/file.gif' border='0' align='absmiddle'></a></td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">김영준</td>
+	  <td align="center">2024-05-22</td>
+	  <td align="center">163</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">113</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5431&page=1&code=qna'>GK-뇨석제거제 MSDS 문의드립니다.</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">삼구아이앤씨</td>
+	  <td align="center">2024-05-16</td>
+	  <td align="center">119</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">112</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5428&page=1&code=qna'>GK 액체자동공급장치 </a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">임다정</td>
+	  <td align="center">2024-04-17</td>
+	  <td align="center">112</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">111</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> &nbsp;&nbsp;<img src='/admin/bbs/skin/bbsBasic/image/re.gif' border='0' align='absmiddle'><a href='/customer/customer06.html?ptype=view&idx=5429&page=1&code=qna'>GK 액체자동공급장치 </a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">지케이그린코리아</td>
+	  <td align="center">2024-04-17</td>
+	  <td align="center">140</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">110</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5427&page=1&code=qna'>유지방분해제 MSDS 비치대상 문의 합니다.</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">김현희</td>
+	  <td align="center">2024-03-21</td>
+	  <td align="center">253</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">109</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=passwd&mode=view&idx=5424&page=1&code=qna'>유지방분해제</a>  <img src='/admin/bbs/skin/bbsBasic/image/lock.gif' border='0' align='absmiddle'>   </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">지훈</td>
+	  <td align="center">2024-02-18</td>
+	  <td align="center">2</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">108</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5421&page=1&code=qna'>cip 용액 관련 문의</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">장현우</td>
+	  <td align="center">2024-01-10</td>
+	  <td align="center">142</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">107</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5414&page=1&code=qna'>PCV 배관에 유분용해제 사용 관련 질문입니다.</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">김민형</td>
+	  <td align="center">2023-06-07</td>
+	  <td align="center">221</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">106</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> &nbsp;&nbsp;<img src='/admin/bbs/skin/bbsBasic/image/re.gif' border='0' align='absmiddle'><a href='/customer/customer06.html?ptype=view&idx=5415&page=1&code=qna'>PCV 배관에 유분용해제 사용 관련 질문입니다.</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">지케이그린코리아</td>
+	  <td align="center">2023-06-07</td>
+	  <td align="center">392</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">105</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5412&page=1&code=qna'>오물용해제 플라스틱 배관 안전한가요?</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">조성호</td>
+	  <td align="center">2023-05-14</td>
+	  <td align="center">277</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">104</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> &nbsp;&nbsp;<img src='/admin/bbs/skin/bbsBasic/image/re.gif' border='0' align='absmiddle'><a href='/customer/customer06.html?ptype=view&idx=5413&page=1&code=qna'>오물용해제 플라스틱 배관 안전한가요?</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">지케이그린코리아</td>
+	  <td align="center">2023-05-16</td>
+	  <td align="center">436</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr>	<tr>
+		<td align="center"></td>
+	  <td align="center" height="28">103</td>
+		<td align="left" style="padding-left:10px;word-break:break-all;">
+	    <table border="0" cellpadding="0" cellspacing="0">
+	    <tr><td height="1"></td></tr>
+	    <tr>
+	      <td rowspan="2" align="center"></td>
+	      <td style="padding-left:3px"><font class="prdqna"></font></td>
+	    </tr>
+	    <tr>
+	    	<td style="padding-left:3px"> <a href='/customer/customer06.html?ptype=view&idx=5406&page=1&code=qna'>용해제 관련 oem 생산도 진행하시나요?</a>     </td>
+	    </tr>
+	    <tr><td height="1"></td></tr>
+	    </table>
+		</td>
+	  <td align="center">축산환경관리원</td>
+	  <td align="center">2023-03-02</td>
+	  <td align="center">163</td>
+	  <!--	  <td align="center">0</td>
+	  -->	</tr>
+	<tr>
+	  <td colspan="10" height="1" bgcolor="#d7d7d7"></td>
+	</tr></table>
+<!-- 게시물 끝 -->   
+  
+<!-- 페이지 번호 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="50" align="center">
+			    <table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center'>      <table border='0' cellspacing='0' cellpadding='0'>        <tr>          <td width='22' height='50'><a href='?ptype=&page=1&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_prev2.gif' align='absmiddle' border=0'></a></td>          <td width='22'><a href='?ptype=&page=1&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_prev.gif' align='absmiddle' border=0'></a></td>          <td align='center'>&nbsp; <b>1</b> / <a href='?ptype=&page=2&code=qna'> 2 </a> / <a href='?ptype=&page=3&code=qna'> 3 </a> / <a href='?ptype=&page=4&code=qna'> 4 </a> / <a href='?ptype=&page=5&code=qna'> 5 </a> /           &nbsp; </td>          <td width='22' align='right'><a href='?ptype=&page=6&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_next.gif' align='absmiddle' border='0'></a></td>          <td width='22' align='right'><a href='?ptype=&page=7&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_next2.gif' align='absmiddle' border='0'></a></td>        </tr>      </table>    </td></tr></table>    </td>
+  </tr>
+</table>  
+<!-- 페이지 번호끝 -->
+
+<!-- 검색 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="50" align="center" bgcolor="#f9f9f9" style="border-top:1px solid #a9a9a9; border-bottom:1px solid #d7d7d7; padding:5px 0px;">
+        
+        <table width="0%" border="0" cellpadding="0" cellspacing="0">
+        <form name="sfrm" action="/customer/customer06.html">
+      	<input type="hidden" name="code" value="qna">
+      	<input type="hidden" name="category" value="">
+          <tr>
+            <td style="padding-right:10px;"><img src="/admin/bbs/skin/bbsBasic/image/search_tit.gif" width="47" height="9" border="0" /></td>
+            <td style="padding-right:5px;">
+							<select name="searchopt" class="select">
+							<option value="subject">제 목</option>
+							<option value="content">내 용</option>
+							<option value="subcon">제목 + 내용</option>
+							<option value="name">작성자</option>
+							<option value="memid">아이디</option>
+							</select>	
+							<script language="javascript">
+							<!--
+							searchopt = document.sfrm.searchopt;
+							for(ii=0; ii<searchopt.length; ii++){
+							 if(searchopt.options[ii].value == "")
+							    searchopt.options[ii].selected = true;
+							}
+							-->
+							</script>
+            </td>
+            <td style="padding-right:10px;"><input name="searchkey" type="text" class="search_input" value="" size="50"></td>
+            <td><input type="image" src="/admin/bbs/skin/bbsBasic/image/btn_search.gif" border="0" align="absmiddle" width="75" height="21" /></td>
+          </tr>
+        </form>
+        </table>
+        
+    </td>
+  </tr>
+</table>  
+<!-- 검색 끝 -->                                                 
+
+<!-- 버튼 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  	<td align="left" style="padding-top:10px">   </td>
+    <td align="right" style="padding-top:10px"><a href='/customer/customer06.html?ptype=list&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_list.gif' border='0'></a>&nbsp;<a href='/customer/customer06.html?ptype=input&mode=insert&code=qna'><img src='/admin/bbs/skin/bbsBasic/image/btn_write.gif' border='0'></a></td>
+  </tr>
+</table>  
+<!-- 버튼 끝 -->				</div>
+				<!--내용 끝-->
+
+			</div>
+			<!--컨텐츠 끝-->
+
+		</div>
+		<div class="clear">
+		</div>
+		<!--컨테이너 박스 끝-->
+	
+	</div>
+	<!--컨테이너 끝-->
+
+
+
+</div>
+</div>
+<!--레이아웃 끝-->
+
+
+<!--하단레이아웃 시작-->
+<div id="footerbody">
+<div id="footer">
+
+	<!--하단내용 시작-->
+	<div class="box">
+
+		<div class="footer_img">
+		 <img src="/common/images/footer_logo.gif" alt="" />
+		</div>
+
+		<div class="copy">
+			<ul class="unb_footer">
+				<li><a href="/info/info01.html" target="_self">이용약관</a></li>
+				<li>|</li>
+				<li><a href="/company/company04.html" target="_self">오시는길</a></li>
+				<li>|</li>
+				<li><a href="/member/join.html" target="_self"><span class="red">개인정보취급방침</span></a></li> 
+			</ul>
+
+			<div class="clear">
+			</div>
+
+			<div class="copyright">
+			  상호: 지케이그린코리아 주식회사  &nbsp;&nbsp;  경기도 광명시 금오로707번길 43-4  &nbsp;&nbsp;  대표이사 : 김익수    <br/>
+			  사업자등록번호: 775-88-01061   &nbsp;&nbsp; 통신판매업신고번호:제 2018-서울구로-1010 호 &nbsp;&nbsp;   TEL : 02-2060-2018   &nbsp;&nbsp; FAX : 02-6455-4936 &nbsp;&nbsp;   E-mail: kim0kim0@naver.com<br/>
+			  Copyright(c)2010greenkorea21.All Right Reserved.<br/>
+  
+			</div>
+		</div>
+
+	</div>
+	<div class="clear">
+	</div>
+	<!--하단내용 끝-->
+
+</div>
+</div>
+<!--하단레이아웃 끝-->
+
+</body> 
+</html> 
+
